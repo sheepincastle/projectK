@@ -202,7 +202,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.2, g: 0.21176471, b: 0.23529412, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -275,6 +275,81 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f817502ea24e4eb4883d6b2b4a7d1e16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveable: 0
+--- !u!50 &1380775912
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380775906}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!70 &1380775913
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380775906}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.3870036}
+  m_Size: {x: 0.5, y: 0.75372493}
+  m_Direction: 0
+--- !u!114 &1380775917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380775906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 363fd05491f16304fa250a7f78b993f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1869196772
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -283,14 +358,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1040875245333741565, guid: 3405e93ea38e38340aca4e2b0689cf1c, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1040875245333741565, guid: 3405e93ea38e38340aca4e2b0689cf1c, type: 3}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5569221738358411607, guid: 3405e93ea38e38340aca4e2b0689cf1c, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5569221738358411607, guid: 3405e93ea38e38340aca4e2b0689cf1c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5569221738358411607, guid: 3405e93ea38e38340aca4e2b0689cf1c, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6057467215974561706, guid: 3405e93ea38e38340aca4e2b0689cf1c, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 6efba477fbbbdfb4aac206795f3c76a2, type: 2}
+      objectReference: {fileID: 9100000, guid: c2fc0aafc4ba14749a6cc196ffeb52b8, type: 2}
     - target: {fileID: 7201483674232776292, guid: 3405e93ea38e38340aca4e2b0689cf1c, type: 3}
       propertyPath: m_Name
       value: Unit000
@@ -390,6 +481,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5601054350472873122, guid: 3405e93ea38e38340aca4e2b0689cf1c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1380775908}
+    - targetCorrespondingSourceObject: {fileID: 5601054350472873122, guid: 3405e93ea38e38340aca4e2b0689cf1c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1380775917}
+    - targetCorrespondingSourceObject: {fileID: 5601054350472873122, guid: 3405e93ea38e38340aca4e2b0689cf1c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1380775913}
+    - targetCorrespondingSourceObject: {fileID: 5601054350472873122, guid: 3405e93ea38e38340aca4e2b0689cf1c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1380775912}
   m_SourcePrefab: {fileID: 100100000, guid: 3405e93ea38e38340aca4e2b0689cf1c, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
