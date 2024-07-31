@@ -39,12 +39,4 @@ public class GameManager : MonoBehaviour
         //씬이 바뀌어도 오브젝트 유지
         DontDestroyOnLoad(gameObject);
     }
-    
-    void Update()
-    {
-        if(Input.anyKeyDown)
-        {
-            //SceneManager.LoadScene("Test");
-        }
-    }
 }

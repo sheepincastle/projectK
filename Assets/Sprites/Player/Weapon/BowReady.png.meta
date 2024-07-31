@@ -1,18 +1,9 @@
 fileFormatVersion: 2
-guid: fc267c18d3becb2489d19bec0f2b960d
+guid: a037f9435303a714e9d6af185d2565f8
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 3018618961690428772
-    second: Body
-  - first:
-      213: -4371727071997471992
-    second: Left
-  - first:
-      213: 2263474349454975077
-    second: Right
+  internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -29,11 +20,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -72,10 +64,12 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 32
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -83,106 +77,139 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 32
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: iPhone
-    maxTextureSize: 32
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
-    maxTextureSize: 32
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Body
+      name: Bow_0
       rect:
         serializedVersion: 2
-        x: 10
-        y: 11
-        width: 12
-        height: 9
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5555556}
+        x: 0
+        y: 0
+        width: 21
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 46501dbc3f944e920800000000000000
-      internalID: 3018618961690428772
+      spriteID: a3d8f465a4ce24e40a89dd0e291cb1b6
+      internalID: -1146458614
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Left
+      name: Bow_1
       rect:
         serializedVersion: 2
-        x: 23
-        y: 15
-        width: 6
-        height: 5
-      alignment: 9
-      pivot: {x: 0.41666666, y: 0.5}
+        x: 21
+        y: 0
+        width: 21
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 803d1a2f3618453c0800000000000000
-      internalID: -4371727071997471992
+      spriteID: 64b24af54ca5661449b37031e85eb23a
+      internalID: -1454613296
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Right
+      name: Bow_2
       rect:
         serializedVersion: 2
-        x: 3
-        y: 15
-        width: 6
-        height: 5
-      alignment: 9
-      pivot: {x: 0.5833333, y: 0.5}
+        x: 42
+        y: 0
+        width: 21
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 560e87dade9796f10800000000000000
-      internalID: 2263474349454975077
+      spriteID: 40f58275ce44cf54f93a40b6205e3867
+      internalID: 1449711289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bow_3
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 0
+        width: 21
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fbae5950b0a02741b2bf5d044052f6b
+      internalID: 1016157192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bow_4
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 0
+        width: 21
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d448a3885ccf624aa39208b2d262ae4
+      internalID: 940348508
       vertices: []
       indices: 
       edges: []
@@ -198,12 +225,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Right: 2263474349454975077
-      Left: -4371727071997471992
-      Body: 3018618961690428772
-  spritePackingTag: 
+      Bow_0: -1146458614
+      Bow_1: -1454613296
+      Bow_2: 1449711289
+      Bow_3: 1016157192
+      Bow_4: 940348508
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
