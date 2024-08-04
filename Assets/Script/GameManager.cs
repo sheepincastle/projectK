@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     public static int player_speed=5;
     public static int player_power=10;
     public static int player_HP=100;
+    public static int player_current_HP=100;
     
     //gamemanager 초기화
     void Awake()

@@ -82,6 +82,7 @@ public class Player : MonoBehaviour
     }
 
     //적 공격에서 상태이상 부여 및 종류 결정
+    //GameManager에서 player_current_HP값을 직접 수정해도 됨
     //0: 경직, 1: 스턴
     public void Attacked(int Attacked)
     {
