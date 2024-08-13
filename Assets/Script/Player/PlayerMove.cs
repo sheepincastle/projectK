@@ -44,7 +44,7 @@ public class PlayerMove : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(animator.GetInteger("Attack")==-1)
+        if(moveable == true)
             rigid.velocity = new Vector3(moveX, moveY, 0)*GameManager.player_speed;
     }
 }

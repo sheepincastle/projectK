@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -114,5 +115,6 @@ public class Player : MonoBehaviour
     void ReMove()
     {
         animator.SetInteger("Attacked", -1);
+        PlayerMove.moveable = true;
     }
 }
