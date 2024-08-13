@@ -27,7 +27,7 @@ public class PlayerMove : MonoBehaviour
         
 
         //움직일 때 애니메이션 작동
-        if((moveX!=0||moveY!=0) && moveable)
+        if((moveX!=0||moveY!=0) && animator.GetInteger("Attack")==-1 && animator.GetInteger("Attacked")==-1)
         {
             animator.SetBool("Run", true);
         }
@@ -36,15 +36,15 @@ public class PlayerMove : MonoBehaviour
             animator.SetBool("Run", false);
         }
         //방향전환
-        if((moveX>0) && moveable)
+        if((moveX>0) && animator.GetInteger("Attack")==-1 && animator.GetInteger("Attacked")==-1)
             player_transform.localScale = new Vector3(-1, 1, 1);
-        else if((moveX<0) && moveable)
+        else if((moveX<0) && animator.GetInteger("Attack")==-1 && animator.GetInteger("Attacked")==-1)
             player_transform.localScale = new Vector3(1, 1, 1);
     }
 
     void FixedUpdate()
     {
-        if(moveable)
+        if(animator.GetInteger("Attack")==-1)
             rigid.velocity = new Vector3(moveX, moveY, 0)*GameManager.player_speed;
     }
 }

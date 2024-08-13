@@ -57,19 +57,35 @@ public class Player : MonoBehaviour
                 case 0://검일 때
                 {
                     animator.SetInteger("Attack", 0);
-                    Invoke("ToIdle", 0.3f);
+                    if(Camera.main.ScreenToWorldPoint(Input.mousePosition).x > transform.position.x)
+                    {
+                        transform.localScale = new Vector3(-1, 1, 1);
+                    }
+                    else if(Camera.main.ScreenToWorldPoint(Input.mousePosition).x < transform.position.x)
+                    {
+                        transform.localScale = new Vector3(1, 1, 1);
+                    }
+                    Invoke("ToIdle", 0.68f);
                     break;
                 }
                 case 1://활일 때
                 {
                     animator.SetInteger("Attack", 1);
                     bow_animator.enabled = true;
-                    Invoke("ToIdle", 0.3f);
+                    if(Camera.main.ScreenToWorldPoint(Input.mousePosition).x > transform.position.x)
+                    {
+                        transform.localScale = new Vector3(-1, 1, 1);
+                    }
+                    else if(Camera.main.ScreenToWorldPoint(Input.mousePosition).x < transform.position.x)
+                    {
+                        transform.localScale = new Vector3(1, 1, 1);
+                    }
+                    Invoke("ToIdle", 0.833f);
                     break;
                 }
             }
         }
-
+        //테스트용
         if(Input.GetKeyDown(KeyCode.J))
             Attacked(0);
         else if(Input.GetKeyDown(KeyCode.K))
@@ -98,6 +114,5 @@ public class Player : MonoBehaviour
     void ReMove()
     {
         animator.SetInteger("Attacked", -1);
-        PlayerMove.moveable = true;
     }
 }
