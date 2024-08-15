@@ -949,11 +949,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f817502ea24e4eb4883d6b2b4a7d1e16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon_mode: 0
   weapons:
   - {fileID: 935061016}
   - {fileID: 1918011652}
   bow_animator: {fileID: 657751913}
+  on_attack: 0
+  weapon_mode: 0
   sword_effect: {fileID: 805483699}
 --- !u!114 &1326420235
 MonoBehaviour:
