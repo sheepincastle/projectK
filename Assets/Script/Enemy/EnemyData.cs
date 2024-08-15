@@ -10,4 +10,9 @@ public class EnemyData : MonoBehaviour
     //적의 collider와 같은곳에 위치해야됨
     public int enemy_HP;
     public int enemy_current_HP;
+
+    void Start()
+    {
+        enemy_current_HP = enemy_HP;
+    }
 }
