@@ -24,6 +24,13 @@ public class Arrow : MonoBehaviour
     {
         //투사체 또는 플레이어가 아닌 물체와 닿으면 파괴
         if(other.tag != "Bullet" && other.tag != "Player" && other.tag != "PlayerWeapon")
-            Destroy(gameObject);
+        {
+            if(other.tag == "Enemy")
+            {
+                EnemyData enemy_data = other.GetComponent<EnemyData>();
+                enemy_data.enemy_current_HP -= GameManager.player_power;
+                Destroy(gameObject);
+            }
+        }
     }
 }

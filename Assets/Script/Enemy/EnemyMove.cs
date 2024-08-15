@@ -6,14 +6,14 @@ using UnityEngine;
 public class EnemyMove : MonoBehaviour
 {
     private Transform target;
-    //Àû ¼Óµµ, ÀÎ½Ä ¹üÀ§, °ø°Ý ¹üÀ§
+    //ï¿½ï¿½ ï¿½Óµï¿½, ï¿½Î½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     public float enemy_speed = 3;
     public float enemy_recognition_range = 10;
     public float enemy_attack_range = 1;
 
     void Start()
     {
-        // ÇÃ·¹ÀÌ¾î Å¸°Ù
+        // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ Å¸ï¿½ï¿½
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
 

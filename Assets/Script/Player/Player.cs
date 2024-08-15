@@ -5,19 +5,20 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    Animator animator;
-    Transform player_transform;
-    Rigidbody2D rigid;
-    //0: 검, 1: 활
-    [SerializeField] int weapon_mode;
     [SerializeField] List<GameObject> weapons = new List<GameObject>();
     [SerializeField] Animator bow_animator;
+    
+    Animator animator;
+
+    //모션 캔슬 후 공격 방지
+    public bool on_attack = false;
+    //0: 검, 1: 활
+    public int weapon_mode;
+    public GameObject sword_effect;
 
     void Awake()
     {
         animator = GetComponent<Animator>();
-        player_transform = GetComponent<Transform>();
-        rigid = GetComponent<Rigidbody2D>();
         //검만 활성화
         weapon_mode = 0;
         weapons[0].SetActive(true);
@@ -51,12 +52,14 @@ public class Player : MonoBehaviour
         }
         
         //우클릭 시 일반 공격
-        if(Input.GetMouseButtonDown(0))
+        if(Input.GetMouseButtonDown(0) && !on_attack)
         {
+            on_attack = true;
             switch(weapon_mode)
             {
                 case 0://검일 때
                 {
+                    sword_effect.SetActive(true);
                     animator.SetInteger("Attack", 0);
                     if(Camera.main.ScreenToWorldPoint(Input.mousePosition).x > transform.position.x)
                     {
@@ -96,6 +99,8 @@ public class Player : MonoBehaviour
     void ToIdle()
     {
         animator.SetInteger("Attack", -1);
+        on_attack = false;
+        sword_effect.SetActive(false);
     }
 
     //적 공격에서 상태이상 부여 및 종류 결정
