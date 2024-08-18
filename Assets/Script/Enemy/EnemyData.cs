@@ -10,9 +10,18 @@ public class EnemyData : MonoBehaviour
     //적의 collider와 같은곳에 위치해야됨
     public int enemy_HP;
     public int enemy_current_HP;
+    public int enemy_power;
 
     void Start()
     {
         enemy_current_HP = enemy_HP;
+    }
+
+    void Update()
+    {
+        if(enemy_current_HP >enemy_HP)//적의 체력이 최대체력보다 많아지면 조절
+        {
+            enemy_current_HP = enemy_HP;
+        }
     }
 }

@@ -6,19 +6,24 @@ using UnityEngine;
 public class EnemyMove : MonoBehaviour
 {
     private Transform target;
-    //ï¿½ï¿½ ï¿½Óµï¿½, ï¿½Î½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    private Vector3 offset = new Vector3(0, 0.3f, 0);
+    //?? ???, ?¥í? ????, ???? ????
     public float enemy_speed = 3;
     public float enemy_recognition_range = 10;
     public float enemy_attack_range = 1;
-    //ìŠ¤í‚¬ ì‚¬ìš©ì¤‘ ì›€ì§ì´ì§€ ì•Šê²Œ í•˜ê¸° ìœ„í•œ ë³€ìˆ˜
+
+    //public float enemy_attack_range=1;
+    //ÀÛÀº ÀûÀº ÇÃ·¹ÀÌ¾î¸¦ °ø°İÇÒ¼ö ¾ø´Â ¹ö±× ¹ß»ı->´ê¾ÒÀ»¶§ Á¤ÁöÇÏµµ·Ï ¼öÁ¤
+    public bool enemy_attack_range_enabled = false;
+    //½ºÅ³ »ç¿ëÁß ¿òÁ÷ÀÌÁö ¾Ê°Ô ÇÏ±â À§ÇÑ º¯¼ö
     public bool moveable = true;
-    //ì ì˜ ì›ë˜ í¬ê¸°ì— ìƒê´€ì—†ì´ ì¢Œìš°ëŒ€ì¹­ì„ í•˜ê¸° ìœ„í•œ ê°’
+    //ÀûÀÇ ¿ø·¡ Å©±â¿¡ »ó°ü¾øÀÌ ÁÂ¿ì´ëÄªÀ» ÇÏ±â À§ÇÑ °ª
     float origin_x;
     Animator animator;
 
     void Start()
     {
-        // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ Å¸ï¿½ï¿½
+        // ?¡À???? ???
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         animator = GetComponent<Animator>();
         origin_x = transform.localScale.x;
@@ -26,27 +31,44 @@ public class EnemyMove : MonoBehaviour
 
     void Update()
     {
-        if(moveable && enemy_attack_range < Vector2.Distance(transform.position, target.position) &&  enemy_recognition_range> Vector2.Distance(transform.position, target.position))
+        float distance = Vector2.Distance(transform.position, target.position + offset);
+        if(moveable &&  enemy_recognition_range > distance)
         {
-            //ì›€ì§ì¼ë•Œ
+            //¿òÁ÷ÀÏ¶§
             animator.SetBool("Run", true);
-            //ì  ì• ë‹ˆë©”ì´í„°ë¥¼ ë§Œë“¤ ë•Œ boolê°’ 'Run'ì„ ì´ìš©í•´ ë‹¬ë¦¬ëŠ” ëª¨ìŠµ êµ¬í˜„í•˜ê¸°
-            transform.position = Vector2.MoveTowards(transform.position, target.position, enemy_speed*Time.deltaTime);
+            //Àû ¾Ö´Ï¸ŞÀÌÅÍ¸¦ ¸¸µé ¶§ bool°ª 'Run'À» ÀÌ¿ëÇØ ´Ş¸®´Â ¸ğ½À ±¸ÇöÇÏ±â
+            transform.position = Vector2.MoveTowards(transform.position, target.position + offset, enemy_speed*Time.deltaTime);
 
-            //ì ì˜ ëª¨ìŠµì´ ë°˜ëŒ€ë¡œ ë‚˜íƒ€ë‚˜ë©´ ìŠ¤í¬ë¦½íŠ¸ê°€ ì•„ë‹ˆë¼ ìœ ë‹ˆí‹°ì—ì„œ scaleì˜ xê°’ ë¶€í˜¸ë¥¼ ë°˜ëŒ€ë¡œ í•´ë†“ê¸°
-            if(target.position.x > transform.position.x)//í”Œë ˆì´ì–´ê°€ ì ì˜ ì˜¤ë¥¸ìª½ì— ìˆì„ ë•Œ
+            //ÀûÀÇ ¸ğ½ÀÀÌ ¹İ´ë·Î ³ªÅ¸³ª¸é ½ºÅ©¸³Æ®°¡ ¾Æ´Ï¶ó À¯´ÏÆ¼¿¡¼­ scaleÀÇ x°ª ºÎÈ£¸¦ ¹İ´ë·Î ÇØ³õ±â
+            if(target.position.x > transform.position.x)//ÇÃ·¹ÀÌ¾î°¡ ÀûÀÇ ¿À¸¥ÂÊ¿¡ ÀÖÀ» ¶§
             {
-                transform.localScale = new Vector3(origin_x, transform.localScale.y, transform.localScale.z);//ê·¸ëŒ€ë¡œ
+                transform.localScale = new Vector3(origin_x, transform.localScale.y, transform.localScale.z);//±×´ë·Î
             }
-            else if(target.position.x < transform.position.x)//í”Œë ˆì´ì–´ê°€ ì ì˜ ì™¼ìª½ì— ìˆì„ ë•Œ
+            else if(target.position.x < transform.position.x)//ÇÃ·¹ÀÌ¾î°¡ ÀûÀÇ ¿ŞÂÊ¿¡ ÀÖÀ» ¶§
             {
-                transform.localScale = new Vector3(origin_x * -1, transform.localScale.y, transform.localScale.z);//ì¢Œìš°ë°˜ì „
+                transform.localScale = new Vector3(origin_x * -1, transform.localScale.y, transform.localScale.z);//ÁÂ¿ì¹İÀü
             }
         }
         else
         {
-            //ì•ˆì›€ì§ì¼ë•Œ
+            //¾È¿òÁ÷ÀÏ¶§
             animator.SetBool("Run", false);
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if(other.gameObject.tag == "Player")//ÇÃ·¹ÀÌ¾î¿Í Á¢ÃËÇÏ¸é ¿òÁ÷ÀÌÁö ¾ÊÀ½
+        {
+            moveable = false;
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D other)
+    {
+        if(other.gameObject.tag == "Player")//ÇÃ·¹ÀÌ¾î¿Í ¶³¾îÁö¸é ¿òÁ÷ÀÏ¼ö ÀÖÀ½
+        {
+            moveable = true;
         }
     }
 }

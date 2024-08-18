@@ -12,7 +12,6 @@ public class Rat : MonoBehaviour
     Transform player_transform;
     Player player_script;
 
-    int rat_power = 5;
     float normal_cooltime = 1;
     float attack_cooltime = 3;
     float ability_cooltime = 5;
@@ -82,11 +81,11 @@ public class Rat : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D other)
+    void OnCollisionStay2D(Collision2D other)
     {
-        if(other.gameObject.tag == "Player")//플레이어와 충돌했을때
+        if(other.gameObject.tag == "Player")//플레이어와 충돌하는동안
         {
-            GameManager.player_current_HP -= rat_power;//공격
+            GameManager.player_current_HP -= enemyData.enemy_power;//공격
             normal_able = false;
             Invoke("ToNormalAble", normal_cooltime);//쿨타임
             if(attack_stiffness)//attack을 사용했을 때 경직

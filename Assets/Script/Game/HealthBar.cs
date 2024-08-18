@@ -10,6 +10,6 @@ public class HealthBar : MonoBehaviour
 
     void Update()   
     {
-        Hp.fillAmount = GameManager.player_current_HP / GameManager.player_HP;
+        Hp.fillAmount = (float)GameManager.player_current_HP / GameManager.player_HP;
     }
 }
