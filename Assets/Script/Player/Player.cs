@@ -94,6 +94,7 @@ public class Player : MonoBehaviour
             Attacked(0);
         else if(Input.GetKeyDown(KeyCode.K))
             Attacked(1);
+
     }
 
     void ToIdle()
