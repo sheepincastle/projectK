@@ -83,7 +83,7 @@ public class Rat : MonoBehaviour
 
     void OnCollisionStay2D(Collision2D other)
     {
-        if(other.gameObject.tag == "Player")//플레이어와 충돌하는동안
+        if(other.gameObject.tag == "Player" && normal_able)//플레이어와 충돌하는동안
         {
             GameManager.player_current_HP -= enemyData.enemy_power;//공격
             normal_able = false;

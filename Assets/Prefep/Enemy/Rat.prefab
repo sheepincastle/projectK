@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5366828039749372648}
   - component: {fileID: 4965630425061260079}
   - component: {fileID: 2282886770599702843}
-  - component: {fileID: 4601021153250309131}
+  - component: {fileID: 2964281718915062883}
   m_Layer: 0
   m_Name: Rat
   m_TagString: Enemy
@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 1011926200503692051}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -138,9 +138,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08720120f2a27824085c48cae91faf9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy_speed: 10
+  enemy_speed: 4
   enemy_recognition_range: 10
   enemy_attack_range: 1
+  enemy_attack_range_enabled: 0
   moveable: 1
 --- !u!114 &4965630425061260079
 MonoBehaviour:
@@ -181,8 +182,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!60 &4601021153250309131
-PolygonCollider2D:
+--- !u!70 &2964281718915062883
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -213,23 +214,6 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4, y: 4}
-    newSize: {x: 0.64, y: 0.64}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.5022495, y: -1.0005022}
-      - {x: 0.5202892, y: -0.7564031}
-      - {x: 0.20337129, y: -0.49308047}
-      - {x: -0.35854483, y: -0.35575962}
-      - {x: -0.4589467, y: -0.50615776}
-      - {x: -0.34994364, y: -0.82885045}
-      - {x: -0.2198472, y: -1.0050963}
-  m_UseDelaunayMesh: 0
+  m_Offset: {x: 0.1, y: -0.8}
+  m_Size: {x: 0.9, y: 0.5}
+  m_Direction: 1

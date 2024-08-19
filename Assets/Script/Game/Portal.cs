@@ -9,11 +9,16 @@ public class Portal : MonoBehaviour
     public String next_stage;
     public GameObject player;
     public GameObject real_player;
-    [SerializeField]//로드할 씬의 좌표
+    //로드할 씬의 좌표
     public float x;
     public float y;
     public float z;
 
+    void Start()
+    {
+        player = GameObject.Find("Unit000");
+        real_player = GameObject.FindWithTag("Player");
+    }
     void OnTriggerEnter2D(Collider2D other)
     {
         if(other.tag == "Player")

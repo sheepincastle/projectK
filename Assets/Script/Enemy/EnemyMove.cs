@@ -6,7 +6,7 @@ using UnityEngine;
 public class EnemyMove : MonoBehaviour
 {
     private Transform target;
-    private Vector3 offset = new Vector3(0, 0.3f, 0);
+    private Vector3 offset = new Vector3(0, 1, 0);
     //?? ???, ?¥í? ????, ???? ????
     public float enemy_speed = 3;
     public float enemy_recognition_range = 10;

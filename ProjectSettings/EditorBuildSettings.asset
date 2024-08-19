@@ -8,13 +8,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Start.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 0
-    path: Assets/Scenes/ManagerMode.unity
-    guid: fb162f71817351240a24fe67efbfcadc
   - enabled: 1
     path: Assets/Scenes/Stage/Stage0.unity
     guid: 5004b4701eba6e74b8f47b38587d6ca8
   - enabled: 1
     path: Assets/Scenes/DontDestroyObject.unity
     guid: 8c6ec06eac6f99b4cbb239cfb2565f36
+  - enabled: 1
+    path: Assets/Scenes/Town.unity
+    guid: 267cb08a805b9164aafb56cd30b7aa85
   m_configObjects: {}

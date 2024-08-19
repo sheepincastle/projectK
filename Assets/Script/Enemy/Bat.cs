@@ -41,18 +41,18 @@ public class Bat : MonoBehaviour
         }
     }
 
-    void OnCollisionStay2D(Collision2D other)//Á¢ÃËÇÏ´Â µ¿¾È °ø°Ý
+    void OnCollisionStay2D(Collision2D other)//ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     {
-        if (distance < 2 && attack_able && other.gameObject.tag == "Player") // °ø°Ý
+        if (distance < 2 && attack_able && other.gameObject.tag == "Player") // ï¿½ï¿½ï¿½ï¿½
         {
             animator.SetTrigger("Attack");
-            if( PlayerMove.moveable == false)// »óÅÂÀÌ»ó½Ã Ãß°¡ µ¥¹ÌÁö
+            if( PlayerMove.moveable == false)// ï¿½ï¿½ï¿½ï¿½ï¿½Ì»ï¿½ï¿½ ï¿½ß°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             {
                 GameManager.player_current_HP -= enemyData.enemy_power + 2;
                 Debug.Log("attack+");
                 if (enemyData.enemy_current_HP <= enemyData.enemy_HP - 3)
                 {
-                    enemyData.enemy_current_HP += 3; // ½ºÅÏ½Ã Ã¼·Â È¸º¹
+                    enemyData.enemy_current_HP += 3; // ï¿½ï¿½ï¿½Ï½ï¿½ Ã¼ï¿½ï¿½ È¸ï¿½ï¿½
                 }
             }
             else

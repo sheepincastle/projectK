@@ -221,6 +221,7 @@ MonoBehaviour:
   enemy_speed: 5
   enemy_recognition_range: 10
   enemy_attack_range: 2
+  enemy_attack_range_enabled: 0
   moveable: 1
 --- !u!114 &3031908279248108357
 MonoBehaviour:
