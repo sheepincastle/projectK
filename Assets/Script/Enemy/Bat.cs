@@ -49,7 +49,7 @@ public class Bat : MonoBehaviour
             if( PlayerMove.moveable == false)// 상태이상시 추가 데미지
             {
                 GameManager.player_current_HP -= enemyData.enemy_power + 2;
-                Debug.Log("attack+");
+                //Debug.Log("attack+");
                 if (enemyData.enemy_current_HP <= enemyData.enemy_HP - 3)
                 {
                     enemyData.enemy_current_HP += 3; // 스턴시 체력 회복
@@ -58,8 +58,8 @@ public class Bat : MonoBehaviour
             else
             {
                 GameManager.player_current_HP -= enemyData.enemy_power;
-                Debug.Log("attack");
-                Debug.Log(GameManager.player_current_HP);
+                //Debug.Log("attack");
+                //Debug.Log(GameManager.player_current_HP);
             }
             attack_able = false;
 
