@@ -152,10 +152,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39828fc5a67d8bc4688f48170717a86f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  portal_to_town: {fileID: 7855975257183592281, guid: fe689e09056b18b40bf7759f2127483a, type: 3}
-  enemies:
-  - {fileID: 1011926200503692051, guid: da1028f5eb37619409b53790640361dd, type: 3}
-  - {fileID: 3011672660099729989, guid: 16dbdc3d4a7bd8541852fc1d8aa750d6, type: 3}
 --- !u!4 &74236592
 Transform:
   m_ObjectHideFlags: 0
@@ -571,7 +567,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95b114fab6f67e546954f6bb6cc771bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  next_stage: Stage0
+  next_stage: Stage1
   player: {fileID: 1244422095}
   real_player: {fileID: 1326420228}
   x: -10
