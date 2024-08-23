@@ -285,7 +285,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe8be986292ee46bfbfb849556b2665e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemList: []
+  itemList:
+  - itemName: sword
+    icon: {fileID: 0}
+    value: 0
+    power: 0
+    defense: 0
+    attackSpeed: 0
+    duration: 0
+    itemType: 0
+  - itemName: bow
+    icon: {fileID: 0}
+    value: 0
+    power: 0
+    defense: 0
+    attackSpeed: 0
+    duration: 0
+    itemType: 0
+  - itemName: Heal Potion
+    icon: {fileID: 0}
+    value: 0
+    power: 0
+    defense: 0
+    attackSpeed: 0
+    duration: 0
+    itemType: 2
+  - itemName: sword 2
+    icon: {fileID: 0}
+    value: 0
+    power: 0
+    defense: 0
+    attackSpeed: 0
+    duration: 0
+    itemType: 2
+  - itemName: sword 3
+    icon: {fileID: 0}
+    value: 0
+    power: 0
+    defense: 0
+    attackSpeed: 0
+    duration: 0
+    itemType: 2
 --- !u!4 &227506861
 Transform:
   m_ObjectHideFlags: 0

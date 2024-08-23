@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7867835904364380102}
   - component: {fileID: 1138544445823130083}
   m_Layer: 0
-  m_Name: PortalToTown
+  m_Name: PortalToStage2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95b114fab6f67e546954f6bb6cc771bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  next_stage: Town
+  next_stage: Stage2
   player: {fileID: 0}
   real_player: {fileID: 0}
   x: 0
