@@ -46,12 +46,13 @@ public class Slime : MonoBehaviour
 
     void OnCollisionStay2D(Collision2D other)//접촉하는 동안 공격
     {
-        if (distance < 2 && skill_able && other.gameObject.tag == "Player") // 스킬
+        if (distance < 2 && skill_able && other.gameObject.tag == "Player" && player_script.weakeningable) // 스킬
         {
             animator.SetTrigger("Ability");
             GameManager.player_current_HP -= 2* enemyData.enemy_power;
             player_script.Attacked(1); //스턴
             GameManager.player_power /= 2; // 공격력 감소
+            player_script.weakeningable = false;
             Debug.Log("skill");
             Debug.Log(GameManager.player_current_HP);
             Debug.Log(GameManager.player_power);
@@ -89,5 +90,6 @@ public class Slime : MonoBehaviour
     {
         GameManager.player_power *= 2;
         Debug.Log(GameManager.player_power);
+        player_script.weakeningable = true;
     }
 }

@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     //0: 검, 1: 활
     public int weapon_mode;
     public GameObject sword_effect;
+    public bool weakeningable = true;
 
     void Awake()
     {
@@ -106,15 +107,15 @@ public class Player : MonoBehaviour
 
     //적 공격에서 상태이상 부여 및 종류 결정
     //GameManager에서 player_current_HP값을 직접 수정해도 됨
-    //0: 경직, 1: 스턴
+    //0: 경직, 1: 
     public void Attacked(int Attacked)
     {
         animator.SetInteger("Attacked", Attacked);
         PlayerMove.moveable = false;
 
-        if(Attacked == 0)
+        if (Attacked == 0)
             Invoke("ReMove", 0.2f);
-        else if(Attacked == 1)
+        else if (Attacked == 1)
             Invoke("ReMove", 1);
     }
 
