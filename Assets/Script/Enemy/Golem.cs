@@ -13,7 +13,9 @@ public class Golem : MonoBehaviour
     Transform player_transform;
     Player player_script;
     Transform transform;
-
+    
+    float batspwan_cooltime = 0;
+    public GameObject batPrepab;
     public int dash_power = 40;
     float dash_speed;
     float distance;
@@ -37,6 +39,19 @@ public class Golem : MonoBehaviour
         distance = Vector2.Distance(transform.position, player_transform.position);
         //돌진 쿨타임 갱신
         dash_cooltime += Time.deltaTime;
+        //박쥐소환 쿨타임 갱신
+        batspwan_cooltime += Time.deltaTime;
+        //박쥐소환쿨타임이 설정값 이상일때 박쥐소환
+        if(batspwan_cooltime >= 20)
+        {
+            enemyMove.moveable = false;
+            animator.SetTrigger("Ability");
+            batspwan_cooltime = 0;
+            GameObject bat1 = Instantiate(batPrepab, new Vector2(transform.position.x -3, transform.position.y), Quaternion.identity);
+            GameObject bat2 = Instantiate(batPrepab, new Vector2(transform.position.x, transform.position.y + 3), Quaternion.identity);
+            GameObject bat3 = Instantiate(batPrepab, new Vector2(transform.position.x + 3, transform.position.y), Quaternion.identity);
+            Invoke("movestart", 0.5f);
+        }
         //죽음
         if (enemyData.enemy_current_HP <= 0)
         {
@@ -51,8 +66,9 @@ public class Golem : MonoBehaviour
             enemyMove.moveable = false;
             //타겟 위치 저장
             dash_target = new Vector3(player_transform.position.x, player_transform.position.y, 0);
-            Invoke("Dash_set", 1f);
             dash_cooltime = 0;
+            Invoke("Dash_set", 1f);
+            
         }
         //돌진 발동
         if(dash)
@@ -89,6 +105,7 @@ public class Golem : MonoBehaviour
     void attack()
     {
         animator.SetTrigger("Attack 3");
+        GameManager.player_current_HP -= enemyData.enemy_power;
     }
     void Dash_set()
     {
@@ -98,7 +115,10 @@ public class Golem : MonoBehaviour
         //돌진 발동
         dash = true;
     }
-    
+    void movestart()
+    {
+        enemyMove.moveable = true;
+    }
     
     
 }
