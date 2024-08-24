@@ -1577,6 +1577,7 @@ MonoBehaviour:
   on_attack: 0
   weapon_mode: 0
   sword_effect: {fileID: 805483699}
+  weakeningable: 1
 --- !u!114 &1326420235
 MonoBehaviour:
   m_ObjectHideFlags: 0
