@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Stage/Stage4.unity
     guid: b301fa438dd85c24ba6ba64465dc250f
+  - enabled: 1
+    path: Assets/Scenes/Stage/MidBoss 1.unity
+    guid: 216de4ae42d9cef458b712642e3071b0
   m_configObjects: {}

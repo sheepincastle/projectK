@@ -8309,7 +8309,7 @@ MonoBehaviour:
   - {fileID: 1890547239}
   - {fileID: 924640714}
   summoned_enemies: []
-  next_scene: {fileID: 7855975257183592281, guid: a0dbb4779bbb3934c98eff06a4e2ae18, type: 3}
+  next_scene: {fileID: 7855975257183592281, guid: ca50fb6c74f8195459e185309a4e4fb7, type: 3}
   portal_position: {fileID: 1662342645}
   progress: 1
 --- !u!1 &730708359
