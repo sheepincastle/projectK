@@ -16,7 +16,7 @@ public class Golem : MonoBehaviour
 
     bool boom = false;
     float boom_range = 3;
-    float boom_cooltime = 22;
+    float boom_cooltime = 21;
     float batspwan_cooltime = 0;
     public GameObject boomPrepab;
     public GameObject batPrepab;
@@ -64,7 +64,7 @@ public class Golem : MonoBehaviour
         {
             boom = true;
             enemyMove.moveable = false;
-            animator.SetTrigger("Attack 2");
+            animator.SetTrigger("Attack");
             boom_cooltime = 0;
             Invoke("boom1", 1.2f);  
         }
@@ -120,7 +120,7 @@ public class Golem : MonoBehaviour
     }
     void attack()
     {
-        animator.SetTrigger("Attack 3");
+        
         GameManager.player_current_HP -= enemyData.enemy_power;
     }
     void Dash_set()
