@@ -16,10 +16,11 @@ public class Boom : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        //ÇÃ·¹ÀÌ¾î¿Í Á¢ÃË½Ã °ø°Ý
+        //ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ ï¿½ï¿½ï¿½Ë½ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (other.gameObject.tag == "Player")
         {
             GameManager.player_current_HP -= boom_damage;
+            other.gameObject.GetComponent<Player>().Hited();
         }
     }
 }

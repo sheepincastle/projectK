@@ -7,23 +7,23 @@ public class EnemyMove : MonoBehaviour
 {
     private Transform target;
     private Vector3 offset = new Vector3(0, 1, 0);
-    //?? ???, ?¥í? ????, ???? ????
+    //?? ???, ?ï¿½ï¿½? ????, ???? ????
     public float enemy_speed = 3;
     public float enemy_recognition_range = 10;
     public float enemy_attack_range = 1;
 
     //public float enemy_attack_range=1;
-    //ÀÛÀº ÀûÀº ÇÃ·¹ÀÌ¾î¸¦ °ø°ÝÇÒ¼ö ¾ø´Â ¹ö±× ¹ß»ý->´ê¾ÒÀ»¶§ Á¤ÁöÇÏµµ·Ï ¼öÁ¤
+    //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾î¸¦ ï¿½ï¿½ï¿½ï¿½ï¿½Ò¼ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½->ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     public bool enemy_attack_range_enabled = false;
-    //½ºÅ³ »ç¿ëÁß ¿òÁ÷ÀÌÁö ¾Ê°Ô ÇÏ±â À§ÇÑ º¯¼ö
+    //ï¿½ï¿½Å³ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê°ï¿½ ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     public bool moveable = true;
-    //ÀûÀÇ ¿ø·¡ Å©±â¿¡ »ó°ü¾øÀÌ ÁÂ¿ì´ëÄªÀ» ÇÏ±â À§ÇÑ °ª
+    //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Å©ï¿½â¿¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Â¿ï¿½ï¿½Äªï¿½ï¿½ ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
     float origin_x;
     Animator animator;
 
     void Start()
     {
-        // ?¡À???? ???
+        // ?ï¿½ï¿½???? ???
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         animator = GetComponent<Animator>();
         origin_x = transform.localScale.x;
@@ -34,31 +34,31 @@ public class EnemyMove : MonoBehaviour
         float distance = Vector2.Distance(transform.position, target.position + offset);
         if(moveable &&  enemy_recognition_range > distance)
         {
-            //¿òÁ÷ÀÏ¶§
+            //ï¿½ï¿½ï¿½ï¿½ï¿½Ï¶ï¿½
             animator.SetBool("Run", true);
-            //Àû ¾Ö´Ï¸ÞÀÌÅÍ¸¦ ¸¸µé ¶§ bool°ª 'Run'À» ÀÌ¿ëÇØ ´Þ¸®´Â ¸ð½À ±¸ÇöÇÏ±â
+            //ï¿½ï¿½ ï¿½Ö´Ï¸ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ boolï¿½ï¿½ 'Run'ï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½ï¿½ ï¿½Þ¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½
             transform.position = Vector2.MoveTowards(transform.position, target.position + offset, enemy_speed*Time.deltaTime);
 
-            //ÀûÀÇ ¸ð½ÀÀÌ ¹Ý´ë·Î ³ªÅ¸³ª¸é ½ºÅ©¸³Æ®°¡ ¾Æ´Ï¶ó À¯´ÏÆ¼¿¡¼­ scaleÀÇ x°ª ºÎÈ£¸¦ ¹Ý´ë·Î ÇØ³õ±â
-            if(target.position.x > transform.position.x)//ÇÃ·¹ÀÌ¾î°¡ ÀûÀÇ ¿À¸¥ÂÊ¿¡ ÀÖÀ» ¶§
+            //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ý´ï¿½ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å©ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Æ´Ï¶ï¿½ ï¿½ï¿½ï¿½ï¿½Æ¼ï¿½ï¿½ï¿½ï¿½ scaleï¿½ï¿½ xï¿½ï¿½ ï¿½ï¿½È£ï¿½ï¿½ ï¿½Ý´ï¿½ï¿½ ï¿½Ø³ï¿½ï¿½ï¿½
+            if(target.position.x > transform.position.x)//ï¿½Ã·ï¿½ï¿½Ì¾î°¡ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ê¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
             {
-                transform.localScale = new Vector3(origin_x, transform.localScale.y, transform.localScale.z);//±×´ë·Î
+                transform.localScale = new Vector3(origin_x, transform.localScale.y, transform.localScale.z);//ï¿½×´ï¿½ï¿½
             }
-            else if(target.position.x < transform.position.x)//ÇÃ·¹ÀÌ¾î°¡ ÀûÀÇ ¿ÞÂÊ¿¡ ÀÖÀ» ¶§
+            else if(target.position.x < transform.position.x)//ï¿½Ã·ï¿½ï¿½Ì¾î°¡ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ê¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
             {
-                transform.localScale = new Vector3(origin_x * -1, transform.localScale.y, transform.localScale.z);//ÁÂ¿ì¹ÝÀü
+                transform.localScale = new Vector3(origin_x * -1, transform.localScale.y, transform.localScale.z);//ï¿½Â¿ï¿½ï¿½ï¿½ï¿½
             }
         }
         else
         {
-            //¾È¿òÁ÷ÀÏ¶§
+            //ï¿½È¿ï¿½ï¿½ï¿½ï¿½Ï¶ï¿½
             animator.SetBool("Run", false);
         }
     }
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.gameObject.tag == "Player")//ÇÃ·¹ÀÌ¾î¿Í Á¢ÃËÇÏ¸é ¿òÁ÷ÀÌÁö ¾ÊÀ½
+        if(other.gameObject.tag == "Player")//ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         {
             moveable = false;
         }
@@ -66,7 +66,7 @@ public class EnemyMove : MonoBehaviour
 
     void OnCollisionExit2D(Collision2D other)
     {
-        if(other.gameObject.tag == "Player")//ÇÃ·¹ÀÌ¾î¿Í ¶³¾îÁö¸é ¿òÁ÷ÀÏ¼ö ÀÖÀ½
+        if(other.gameObject.tag == "Player")//ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¼ï¿½ ï¿½ï¿½ï¿½ï¿½
         {
             moveable = true;
         }

@@ -21,6 +21,7 @@ public class PlayerAttack : MonoBehaviour
                 //활과 데미지가 같으면 원거리공격인 활만씀
                 EnemyData enemy_data = other.GetComponent<EnemyData>();
                 enemy_data.enemy_current_HP -= GameManager.player_power;
+                enemy_data.Hitted();
             }
         }
         

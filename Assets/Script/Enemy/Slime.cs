@@ -44,14 +44,15 @@ public class Slime : MonoBehaviour
         }
     }
 
-    void OnCollisionStay2D(Collision2D other)//Á¢ÃËÇÏ´Â µ¿¾È °ø°Ý
+    void OnCollisionStay2D(Collision2D other)//ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     {
-        if (distance < 2 && skill_able && other.gameObject.tag == "Player" && player_script.weakeningable) // ½ºÅ³
+        if (distance < 2 && skill_able && other.gameObject.tag == "Player" && player_script.weakeningable) // ï¿½ï¿½Å³
         {
             animator.SetTrigger("Ability");
             GameManager.player_current_HP -= 2* enemyData.enemy_power;
-            player_script.Attacked(1); //½ºÅÏ
-            GameManager.player_power /= 2; // °ø°Ý·Â °¨¼Ò
+            other.gameObject.GetComponent<Player>().Hited();
+            player_script.Attacked(1); //ï¿½ï¿½ï¿½ï¿½
+            GameManager.player_power /= 2; // ï¿½ï¿½ï¿½Ý·ï¿½ ï¿½ï¿½ï¿½ï¿½
             player_script.weakeningable = false;
             Debug.Log("skill");
             Debug.Log(GameManager.player_current_HP);
@@ -63,10 +64,11 @@ public class Slime : MonoBehaviour
             Invoke("WeakeningDisable", 3);
 
         }
-        else if (distance < 2 && attack_able && other.gameObject.tag == "Player") //°ø°Ý
+        else if (distance < 2 && attack_able && other.gameObject.tag == "Player") //ï¿½ï¿½ï¿½ï¿½
         {
             animator.SetTrigger("Attack");
             GameManager.player_current_HP -= enemyData.enemy_power;
+            other.gameObject.GetComponent<Player>().Hited();
             Debug.Log("attack");
             Debug.Log(GameManager.player_current_HP);
 

@@ -86,6 +86,7 @@ public class Rat : MonoBehaviour
         if(other.gameObject.tag == "Player" && normal_able)//플레이어와 충돌하는동안
         {
             GameManager.player_current_HP -= enemyData.enemy_power;//공격
+            other.gameObject.GetComponent<Player>().Hited();
             normal_able = false;
             Invoke("ToNormalAble", normal_cooltime);//쿨타임
             if(attack_stiffness)//attack을 사용했을 때 경직

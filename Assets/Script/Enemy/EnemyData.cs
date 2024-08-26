@@ -11,10 +11,13 @@ public class EnemyData : MonoBehaviour
     public int enemy_HP;
     public int enemy_current_HP;
     public int enemy_power;
+    
+    SpriteRenderer sprite;
 
     void Start()
     {
         enemy_current_HP = enemy_HP;
+        sprite = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -23,5 +26,16 @@ public class EnemyData : MonoBehaviour
         {
             enemy_current_HP = enemy_HP;
         }
+    }
+
+    public void Hitted()
+    {
+        sprite.color = new Color(255/255, 167/255, 167/255, 255/255);
+        Invoke("ToOriginColor", 0.5f);
+    }
+
+    void ToOriginColor()
+    {
+        sprite.color = new Color(1, 1, 1, 1);
     }
 }

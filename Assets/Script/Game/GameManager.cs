@@ -17,4 +17,29 @@ public class GameManager : MonoBehaviour
     public static int player_power=10;
     public static int player_HP=100;
     public static int player_current_HP=100;
+
+    void Start()
+    {
+        switch(SceneManager.GetActiveScene().name)
+        {
+            case "Stage1":
+                current_stage=1;
+                break;
+            case "Stage2":
+                current_stage=2;
+                break;
+            case "Stage3":
+                current_stage=3;
+                break;
+            case "Stage4":
+                current_stage=4;
+                break;
+            case "MidBoss":
+                current_stage=10;
+                break;
+            case "FinalBoss":
+                current_stage=20;
+                break;
+        }
+    }
 }

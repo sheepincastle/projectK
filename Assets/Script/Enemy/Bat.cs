@@ -49,6 +49,7 @@ public class Bat : MonoBehaviour
             if( PlayerMove.moveable == false)// �����̻�� �߰� ������
             {
                 GameManager.player_current_HP -= enemyData.enemy_power + 2;
+                other.gameObject.GetComponent<Player>().Hited();
                 //Debug.Log("attack+");
                 if (enemyData.enemy_current_HP <= enemyData.enemy_HP - 3)
                 {
@@ -58,6 +59,7 @@ public class Bat : MonoBehaviour
             else
             {
                 GameManager.player_current_HP -= enemyData.enemy_power;
+                other.gameObject.GetComponent<Player>().Hited();
                 //Debug.Log("attack");
                 //Debug.Log(GameManager.player_current_HP);
             }

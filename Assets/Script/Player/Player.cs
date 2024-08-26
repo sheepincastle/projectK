@@ -13,9 +13,9 @@ public class Player : MonoBehaviour
     [SerializeField] Animator bow_animator;
     
     Animator animator;
+    public GameObject hitted_image;
     Vector3 dash_direction;
 
-    //모션 캔슬 후 공격 방지
     public bool on_attack = false;
 
     //대쉬기능을 위한 변수들
@@ -35,6 +35,7 @@ public class Player : MonoBehaviour
     void Awake()
     {
         animator = GetComponent<Animator>();
+        hitted_image.SetActive(false);
         //검만 활성화
         weapon_mode = 0;
         weapons[0].SetActive(true);
@@ -188,5 +189,16 @@ public class Player : MonoBehaviour
 
         dash_cool_down.fillAmount = 0;
         dash_able = true;
+    }
+
+    public void Hited()
+    {
+        hitted_image.SetActive(true);
+        Invoke("ToOriginColor", 0.3f);
+    }
+
+    void ToOriginColor()
+    {
+        hitted_image.SetActive(false);
     }
 }
