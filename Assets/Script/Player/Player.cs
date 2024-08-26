@@ -1,7 +1,11 @@
 using JetBrains.Annotations;
+using Microsoft.Unity.VisualStudio.Editor;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -9,9 +13,20 @@ public class Player : MonoBehaviour
     [SerializeField] Animator bow_animator;
     
     Animator animator;
+    Vector3 dash_direction;
 
     //모션 캔슬 후 공격 방지
     public bool on_attack = false;
+
+    //대쉬기능을 위한 변수들
+    public bool on_dash = false;
+    public float dash_cooltime = 10;
+    public bool dash_able = true;
+    public float dash_duration = 0.5f;
+    public float dash_time;
+    public UnityEngine.UI.Image dash_cool_down;
+
+
     //0: 검, 1: 활
     public int weapon_mode;
     public GameObject sword_effect;
@@ -53,7 +68,7 @@ public class Player : MonoBehaviour
         }
         
         //우클릭 시 일반 공격
-        if(Input.GetMouseButtonDown(0) && !on_attack)
+        if(Input.GetMouseButtonDown(0) && !on_attack && !on_dash)
         {
             on_attack = true;
             switch(weapon_mode)
@@ -91,11 +106,34 @@ public class Player : MonoBehaviour
             }
         }
         //테스트용
-        if(Input.GetKeyDown(KeyCode.J))
+        /*if(Input.GetKeyDown(KeyCode.J))
             Attacked(0);
         else if(Input.GetKeyDown(KeyCode.K))
-            Attacked(1);
+            Attacked(1);*/
 
+        if(Input.GetKeyDown(KeyCode.Space)&& dash_able)
+        {
+            dash_time = 0;
+            dash_able = false;
+            on_dash = true;
+            //대쉬하는동안 다른 움직임x
+            on_attack = false;
+            PlayerMove.moveable = false;
+            bow_animator.enabled = false;
+            animator.SetTrigger("Dash");
+            sword_effect.SetActive(false);
+            dash_cool_down.fillAmount = 1;
+
+            Vector3 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mouse.z = transform.position.z;
+            dash_direction = (mouse- transform.position).normalized;
+            if(mouse.x > transform.position.x)
+                transform.localScale = new Vector3(-1, 1, 1);
+            else if(mouse.x < transform.position.x)
+                transform.localScale = new Vector3(1, 1, 1);
+
+            StartCoroutine(Dash());
+        }
     }
 
     void ToIdle()
@@ -110,18 +148,45 @@ public class Player : MonoBehaviour
     //0: 경직, 1: 
     public void Attacked(int Attacked)
     {
-        animator.SetInteger("Attacked", Attacked);
-        PlayerMove.moveable = false;
-
-        if (Attacked == 0)
-            Invoke("ReMove", 0.2f);
-        else if (Attacked == 1)
-            Invoke("ReMove", 1);
+        if(!on_dash)
+        {
+            animator.SetInteger("Attacked", Attacked);
+            PlayerMove.moveable = false;
+            if (Attacked == 0)
+                Invoke("ReMove", 0.2f);
+            else if (Attacked == 1)
+                Invoke("ReMove", 1);
+        }  
     }
 
     void ReMove()
     {
         animator.SetInteger("Attacked", -1);
         PlayerMove.moveable = true;
+    }
+
+    IEnumerator Dash()
+    {
+        while(dash_time < dash_cooltime)
+        {
+            dash_time += Time.deltaTime;
+
+            if(dash_time > 0.25f && dash_time < 0.5f)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, transform.position + dash_direction, 20 * Time.deltaTime);
+            }
+            else if(dash_time >= 0.5f)
+            {
+                on_dash = false;
+                ReMove();
+            }
+            
+            dash_cool_down.fillAmount = 1- (dash_time/dash_cooltime);//쿨타임 이미지 작동
+
+            yield return null;
+        }
+
+        dash_cool_down.fillAmount = 0;
+        dash_able = true;
     }
 }

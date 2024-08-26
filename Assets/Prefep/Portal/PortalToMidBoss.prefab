@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95b114fab6f67e546954f6bb6cc771bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  next_stage: MidBoss 1
+  next_stage: MidBoss
   player: {fileID: 0}
   real_player: {fileID: 0}
   x: 0
