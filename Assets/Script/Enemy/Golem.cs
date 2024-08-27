@@ -14,9 +14,12 @@ public class Golem : MonoBehaviour
     Player player_script;
     Transform transform;
 
+    float boom_abletime = 27;
+    float bat_abletime = 18;
+    float dash_abletime = 10;
     bool boom = false;
     float boom_range = 3;
-    float boom_cooltime = 21;
+    float boom_cooltime = 23;
     float batspwan_cooltime = 0;
     public GameObject boomPrepab;
     public GameObject batPrepab;
@@ -49,7 +52,7 @@ public class Golem : MonoBehaviour
         //폭발 쿨타임 갱신
         boom_cooltime += Time.deltaTime;
         //박쥐소환쿨타임이 설정값 이상일때 박쥐소환
-        if(batspwan_cooltime >= 18 && dash == false && enemyData.enemy_current_HP > 0 && boom == false)
+        if(batspwan_cooltime >= bat_abletime && dash == false && enemyData.enemy_current_HP > 0 && boom == false)
         {
             enemyMove.moveable = false;
             animator.SetTrigger("Ability");
@@ -60,7 +63,7 @@ public class Golem : MonoBehaviour
             Invoke("movestart", 0.5f);
         }
         //폭발 쿨타임이 설정값 이상일때 폭발
-        if(boom_cooltime >= 27 && batspwan_cooltime < 18 && batspwan_cooltime > 1 && dash == false && enemyData.enemy_current_HP > 0)
+        if(boom_cooltime >= boom_abletime && batspwan_cooltime < bat_abletime && batspwan_cooltime > 1 && dash == false && enemyData.enemy_current_HP > 0)
         {
             boom = true;
             enemyMove.moveable = false;
@@ -76,7 +79,7 @@ public class Golem : MonoBehaviour
             Destroy(gameObject, 1);
         }
         //일정거리에 플레이어가 있고 돌진쿨타임이 설정값 이상일때 돌진 준비
-        if(dash_cooltime >= 10 && distance >= 6 && distance <= 12 && enemyData.enemy_current_HP > 0 && boom == false)
+        if(dash_cooltime >= dash_abletime && distance >= 6 && distance <= 12 && enemyData.enemy_current_HP > 0 && boom == false && boom_cooltime < boom_abletime && batspwan_cooltime < bat_abletime && boom_cooltime > 5)
         {
             //잠시 정지
             enemyMove.moveable = false;
@@ -108,6 +111,7 @@ public class Golem : MonoBehaviour
         if(other.gameObject.tag == "Player" && dash)
         {
             GameManager.player_current_HP -= dash_power;
+            other.gameObject.GetComponent<Player>().Hited();
         }
     }
     void OnCollisionStay2D(Collision2D other)
@@ -120,7 +124,7 @@ public class Golem : MonoBehaviour
     }
     void attack()
     {
-        
+        player.gameObject.GetComponent<Player>().Hited();
         GameManager.player_current_HP -= enemyData.enemy_power;
     }
     void Dash_set()
