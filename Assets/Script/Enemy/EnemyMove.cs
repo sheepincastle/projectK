@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class EnemyMove : MonoBehaviour
 {
+    Rigidbody2D rigid;
     private Transform target;
     private Vector3 offset = new Vector3(0, 1, 0);
     //?? ???, ?��? ????, ???? ????
@@ -23,6 +24,7 @@ public class EnemyMove : MonoBehaviour
 
     void Start()
     {
+        rigid = GetComponent<Rigidbody2D>();
         // ?��???? ???
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         animator = GetComponent<Animator>();
@@ -37,7 +39,8 @@ public class EnemyMove : MonoBehaviour
             //�����϶�
             animator.SetBool("Run", true);
             //�� �ִϸ����͸� ���� �� bool�� 'Run'�� �̿��� �޸��� ��� �����ϱ�
-            transform.position = Vector2.MoveTowards(transform.position, target.position + offset, enemy_speed*Time.deltaTime);
+            rigid.MovePosition(Vector2.MoveTowards(transform.position, target.position + offset, enemy_speed*Time.deltaTime*5));
+            //transform.position = Vector2.MoveTowards(transform.position, target.position + offset, enemy_speed*Time.deltaTime);
 
             //���� ����� �ݴ�� ��Ÿ���� ��ũ��Ʈ�� �ƴ϶� ����Ƽ���� scale�� x�� ��ȣ�� �ݴ�� �س���
             if(target.position.x > transform.position.x)//�÷��̾ ���� �����ʿ� ���� ��

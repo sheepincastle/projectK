@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
@@ -20,6 +21,10 @@ public class PlayerAttack : MonoBehaviour
                 //검은 여러번 공격함
                 //활과 데미지가 같으면 원거리공격인 활만씀
                 EnemyData enemy_data = other.GetComponent<EnemyData>();
+                if(enemy_data == null)
+                {
+                    enemy_data = other.GetComponentInParent<EnemyData>();
+                }
                 enemy_data.enemy_current_HP -= GameManager.player_power;
                 enemy_data.Hitted();
             }

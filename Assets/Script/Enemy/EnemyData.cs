@@ -30,8 +30,11 @@ public class EnemyData : MonoBehaviour
 
     public void Hitted()
     {
-        sprite.color = new Color(255/255, 167/255, 167/255, 255/255);
-        Invoke("ToOriginColor", 0.5f);
+        if(sprite != null)
+        {
+            sprite.color = new Color(255/255, 167/255, 167/255, 255/255);
+            Invoke("ToOriginColor", 0.5f);
+        }
     }
 
     void ToOriginColor()
