@@ -18,6 +18,8 @@ public class Golem : MonoBehaviour
     float boom_abletime = 27;
     float bat_abletime = 18;
     float dash_abletime = 10;
+    float attack_abletime = 1.3f;
+    bool attack_able = true;
     bool boom = false;
     float boom_range = 3;
     float boom_cooltime = 23;
@@ -48,13 +50,13 @@ public class Golem : MonoBehaviour
     {
         rigidbody.velocity = Vector3.zero;
         distance = Vector2.Distance(transform.position, player_transform.position);
-        //µ¹Áø ÄðÅ¸ÀÓ °»½Å
+        //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         dash_cooltime += Time.deltaTime;
-        //¹ÚÁã¼ÒÈ¯ ÄðÅ¸ÀÓ °»½Å
+        //ï¿½ï¿½ï¿½ï¿½ï¿½È¯ ï¿½ï¿½Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         batspwan_cooltime += Time.deltaTime;
-        //Æø¹ß ÄðÅ¸ÀÓ °»½Å
+        //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         boom_cooltime += Time.deltaTime;
-        //¹ÚÁã¼ÒÈ¯ÄðÅ¸ÀÓÀÌ ¼³Á¤°ª ÀÌ»óÀÏ¶§ ¹ÚÁã¼ÒÈ¯
+        //ï¿½ï¿½ï¿½ï¿½ï¿½È¯ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì»ï¿½ï¿½Ï¶ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½È¯
         if(batspwan_cooltime >= bat_abletime && dash == false && enemyData.enemy_current_HP > 0 && boom == false)
         {
             enemyMove.moveable = false;
@@ -65,7 +67,7 @@ public class Golem : MonoBehaviour
             GameObject bat3 = Instantiate(batPrepab, new Vector2(transform.position.x + 3, transform.position.y), Quaternion.identity);
             Invoke("movestart", 0.5f);
         }
-        //Æø¹ß ÄðÅ¸ÀÓÀÌ ¼³Á¤°ª ÀÌ»óÀÏ¶§ Æø¹ß
+        //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì»ï¿½ï¿½Ï¶ï¿½ ï¿½ï¿½ï¿½ï¿½
         if(boom_cooltime >= boom_abletime && batspwan_cooltime < bat_abletime && batspwan_cooltime > 1 && dash == false && enemyData.enemy_current_HP > 0)
         {
             boom = true;
@@ -74,32 +76,32 @@ public class Golem : MonoBehaviour
             boom_cooltime = 0;
             Invoke("boom1", 1.2f);  
         }
-        //Á×À½
+        //ï¿½ï¿½ï¿½ï¿½
         if (enemyData.enemy_current_HP <= 0)
         {
             animator.SetTrigger("Death");
             enemyMove.moveable = false;
             Destroy(gameObject, 1);
         }
-        //ÀÏÁ¤°Å¸®¿¡ ÇÃ·¹ÀÌ¾î°¡ ÀÖ°í µ¹ÁøÄðÅ¸ÀÓÀÌ ¼³Á¤°ª ÀÌ»óÀÏ¶§ µ¹Áø ÁØºñ
+        //ï¿½ï¿½ï¿½ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾î°¡ ï¿½Ö°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì»ï¿½ï¿½Ï¶ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Øºï¿½
         if(dash_cooltime >= dash_abletime && distance >= 6 && distance <= 12 && enemyData.enemy_current_HP > 0 && boom == false && boom_cooltime < boom_abletime && batspwan_cooltime < bat_abletime && boom_cooltime > 5)
         {
-            //Àá½Ã Á¤Áö
+            //ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             enemyMove.moveable = false;
-            //Å¸°Ù À§Ä¡ ÀúÀå
+            //Å¸ï¿½ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½
             dash_target = new Vector3(player_transform.position.x, player_transform.position.y, 0);
             dash_cooltime = 0;
             Invoke("Dash_set", 1f);
             
         }
-        //µ¹Áø ¹ßµ¿
+        //ï¿½ï¿½ï¿½ï¿½ ï¿½ßµï¿½
         if(dash)
         {
-            //ÀÎ½ÄÇß´ø À§Ä¡¿¡ µ¹Áø
+            //ï¿½Î½ï¿½ï¿½ß´ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             transform.position = Vector2.MoveTowards(transform.position, dash_target + offset, dash_speed * Time.deltaTime);
-            //½Ã°£ÀÌ Áö³¯¼ö·Ï ¼Óµµ °¨¼Ò
+            //ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Óµï¿½ ï¿½ï¿½ï¿½ï¿½
              dash_speed -= Time.deltaTime * 80f;
-            //µ¹Áø ¼Óµµ°¡ 0ÀÌ¸é ÁßÁö
+            //ï¿½ï¿½ï¿½ï¿½ ï¿½Óµï¿½ï¿½ï¿½ 0ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½
             if(dash_speed <= 0)
             {
                 dash = false;
@@ -110,7 +112,7 @@ public class Golem : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D other)
     {
-        //µ¹ÁøÁß ÇÃ·¹ÀÌ¾î¿Í Á¢ÃË½Ã °ø°Ý
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ ï¿½ï¿½ï¿½Ë½ï¿½ ï¿½ï¿½ï¿½ï¿½
         if(other.gameObject.tag == "Player" && dash)
         {
             GameManager.player_current_HP -= dash_power;
@@ -119,30 +121,37 @@ public class Golem : MonoBehaviour
     }
     void OnCollisionStay2D(Collision2D other)
     {
-        //ÇÃ·¹ÀÌ¾î¿Í Á¢ÃæÁßÀÏ¶§ °ø°Ý
-        if (other.gameObject.tag == "Player"  && distance < 4 && dash == false)
+        //ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¶ï¿½ ï¿½ï¿½ï¿½ï¿½
+        if (other.gameObject.tag == "Player"  && distance < 4 && dash == false && attack_able)
         {
-            InvokeRepeating("attack",0f,1.3f);
+            attack();
         }
     }
     void attack()
     {
         player.gameObject.GetComponent<Player>().Hited();
         GameManager.player_current_HP -= enemyData.enemy_power;
+        attack_able = false;
+        Invoke("ToAttackAble", attack_abletime);
+    }
+
+    void ToAttackAble()
+    {
+        attack_able = true;
     }
     void Dash_set()
     {
         animator.SetTrigger("Attack 3");
-        //µ¹Áø ¼Óµµ °»½Å
+        //ï¿½ï¿½ï¿½ï¿½ ï¿½Óµï¿½ ï¿½ï¿½ï¿½ï¿½
         dash_speed = 40;
-        //µ¹Áø ¹ßµ¿
+        //ï¿½ï¿½ï¿½ï¿½ ï¿½ßµï¿½
         dash = true;
     }
     void movestart()
     {
         enemyMove.moveable = true;
     }
-    //1Â÷ Æø¹ß
+    //1ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     void boom1()
     {
         animator.SetTrigger("Ability");
@@ -155,7 +164,7 @@ public class Golem : MonoBehaviour
         }
         Invoke("boom2", 1.2f);
     }
-    //2Â÷ Æø¹ß
+    //2ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     void boom2()
     {
         animator.SetTrigger("Ability");
@@ -168,7 +177,7 @@ public class Golem : MonoBehaviour
         }
         Invoke("boom3", 1.2f);
     }
-    //3Â÷ Æø¹ß
+    //3ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     void boom3()
     {
         animator.SetTrigger("Ability");

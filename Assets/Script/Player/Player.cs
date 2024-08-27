@@ -195,6 +195,7 @@ public class Player : MonoBehaviour
     {
         hitted_image.SetActive(true);
         Invoke("ToOriginColor", 0.3f);
+        Debug.Log(GameManager.player_current_HP);
     }
 
     void ToOriginColor()
