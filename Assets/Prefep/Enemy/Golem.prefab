@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 1909978545011648144}
   m_Layer: 0
   m_Name: Golem
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,8 +123,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a48883b2912ec8c49bcb8c50ffebc6bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy_HP: 5000
-  enemy_current_HP: 5000
+  enemy_HP: 500
+  enemy_current_HP: 500
   enemy_power: 20
 --- !u!114 &4830756830355869027
 MonoBehaviour:
@@ -192,7 +192,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -204,7 +204,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &1909978545011648144
 MonoBehaviour:
   m_ObjectHideFlags: 0

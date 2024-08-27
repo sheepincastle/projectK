@@ -13,6 +13,7 @@ public class Golem : MonoBehaviour
     Transform player_transform;
     Player player_script;
     Transform transform;
+    Rigidbody2D rigidbody;
 
     float boom_abletime = 27;
     float bat_abletime = 18;
@@ -33,6 +34,7 @@ public class Golem : MonoBehaviour
 
     void Start()
     {
+        rigidbody = GetComponent<Rigidbody2D> ();
         transform = GetComponent<Transform>();
         enemyMove = GetComponent<EnemyMove>();
         animator = GetComponent<Animator>();
@@ -44,6 +46,7 @@ public class Golem : MonoBehaviour
 
     void Update()
     {
+        rigidbody.velocity = Vector3.zero;
         distance = Vector2.Distance(transform.position, player_transform.position);
         //돌진 쿨타임 갱신
         dash_cooltime += Time.deltaTime;
