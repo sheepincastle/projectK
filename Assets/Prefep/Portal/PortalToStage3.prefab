@@ -158,6 +158,6 @@ MonoBehaviour:
   next_stage: Stage3
   player: {fileID: 0}
   real_player: {fileID: 0}
-  x: 0
-  y: 0
+  x: -20
+  y: 1
   z: 0
