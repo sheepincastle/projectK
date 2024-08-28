@@ -7,7 +7,7 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/Start.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    guid: 1731df5d3d3ab2b42b5540b45a45d829
   - enabled: 1
     path: Assets/Scenes/DontDestroyObject.unity
     guid: 88f67cae9f1db684cb1c1d45e9484ae6
@@ -19,7 +19,7 @@ EditorBuildSettings:
     guid: d7d8c7e45a2f59a48a244c3e161235e0
   - enabled: 1
     path: Assets/Scenes/Stage/MidBoss.unity
-    guid: 2f1244bbc285aed4d961fa11c440f050
+    guid: a0da871ca2a470e4095e90d622f71d87
   - enabled: 1
     path: Assets/Scenes/Stage/Stage1.unity
     guid: 25a2b78d8e8e10d42adf58c76783b180
@@ -32,7 +32,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Stage/Stage4.unity
     guid: a03f477426871544baf921555cc618a0
-  - enabled: 0
-    path: Assets/Scenes/Stage/MidBoss 1.unity
-    guid: 216de4ae42d9cef458b712642e3071b0
   m_configObjects: {}
