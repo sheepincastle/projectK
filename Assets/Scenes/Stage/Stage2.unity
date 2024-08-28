@@ -8312,6 +8312,7 @@ MonoBehaviour:
   next_scene: {fileID: 7855975257183592281, guid: ca50fb6c74f8195459e185309a4e4fb7, type: 3}
   portal_position: {fileID: 1662342645}
   progress: 1
+  denger: {fileID: 5820756794168111532, guid: 088fda0216428d14d871fc9dfdfaab80, type: 3}
 --- !u!1 &730708359
 GameObject:
   m_ObjectHideFlags: 0

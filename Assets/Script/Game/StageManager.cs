@@ -18,6 +18,8 @@ public class StageManager : MonoBehaviour
     public Transform portal_position;
     int phase;
     public bool progress = true;
+    public GameObject denger;
+    float timer;
 
     // Start is called before the first frame update
     void Start()
@@ -34,25 +36,28 @@ public class StageManager : MonoBehaviour
             switch(phase)
             {
                 case 0:
-                    for(int i = 0; i < enemies_phase1.Count; i++)//각 페이즈의 적 수만큼 반복
+                    progress = false;
+                    for (int i = 0; i < enemies_phase1.Count; i++)//각 페이즈의 적 수만큼 반복
                     {
-                        summoned_enemies.Add(Instantiate(enemies_phase1[i], phase1_location[i].position, transform.rotation));//적 소환
+                        Instantiate(denger, phase1_location[i].position,transform.rotation);
                     }
-                    phase++;
+                    Invoke("phase1", 3f);
                     return;
                 case 1:
-                    for(int i = 0; i < enemies_phase2.Count; i++)//각 페이즈의 적 수만큼 반복
+                    progress = false;
+                    for (int i = 0; i < enemies_phase2.Count; i++)//각 페이즈의 적 수만큼 반복
                     {
-                        summoned_enemies.Add(Instantiate(enemies_phase2[i], phase2_location[i].position, transform.rotation));//적 소환
+                        Instantiate(denger, phase2_location[i].position, transform.rotation);
                     }
-                    phase++;
+                    Invoke("phase2", 3f);
                     return;
                 case 2:
-                    for(int i = 0; i < enemies_phase3.Count; i++)//각 페이즈의 적 수만큼 반복
+                    progress = false;
+                    for (int i = 0; i < enemies_phase3.Count; i++)//각 페이즈의 적 수만큼 반복
                     {
-                        summoned_enemies.Add(Instantiate(enemies_phase3[i], phase3_location[i].position, transform.rotation));//적 소환
+                        Instantiate(denger, phase3_location[i].position, transform.rotation);
                     }
-                    phase++;
+                    Invoke("phase3", 3f);
                     return;
                 case 3:
                     Instantiate(next_scene, portal_position.position, transform.rotation);
@@ -60,5 +65,35 @@ public class StageManager : MonoBehaviour
                     return;
             }
         }
+    }
+    void phase1()
+    {
+        for (int i = 0; i < enemies_phase1.Count; i++)//각 페이즈의 적 수만큼 반복
+        {
+            summoned_enemies.Add(Instantiate(enemies_phase1[i], phase1_location[i].position, transform.rotation));//적 소환
+        }
+        phase++;
+        progress = true;
+        return;
+    }
+    void phase2()
+    {
+        for (int i = 0; i < enemies_phase2.Count; i++)//각 페이즈의 적 수만큼 반복
+        {
+            summoned_enemies.Add(Instantiate(enemies_phase2[i], phase2_location[i].position, transform.rotation));//적 소환
+        }
+        phase++;
+        progress = true;
+        return;
+    }
+    void phase3()
+    {
+        for (int i = 0; i < enemies_phase3.Count; i++)//각 페이즈의 적 수만큼 반복
+        {
+            summoned_enemies.Add(Instantiate(enemies_phase3[i], phase3_location[i].position, transform.rotation));//적 소환
+        }
+        phase++;
+        progress = true;
+        return;
     }
 }
