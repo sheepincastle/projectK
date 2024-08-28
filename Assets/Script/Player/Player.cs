@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEditor;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -31,6 +32,7 @@ public class Player : MonoBehaviour
     public int weapon_mode;
     public GameObject sword_effect;
     public bool weakeningable = true;
+    public bool midboss_cleared = false;
 
     void Awake()
     {
@@ -40,6 +42,7 @@ public class Player : MonoBehaviour
         weapon_mode = 0;
         weapons[0].SetActive(true);
         weapons[1].SetActive(false);
+        weapons[2].SetActive(false);
         animator.SetInteger("Attack", -1);
         animator.SetInteger("Attacked", -1);
     }
@@ -49,21 +52,44 @@ public class Player : MonoBehaviour
         //tap키로 무기 변환
         if(Input.GetKeyDown(KeyCode.Tab))
         {
-            switch(weapon_mode)
+            if (!midboss_cleared)
             {
-                case 0://검일 때
+                switch (weapon_mode)
                 {
-                    weapon_mode=1;
-                    weapons[0].SetActive(false);
-                    weapons[1].SetActive(true);
-                    break;
+                    case 0://검일 때
+                        {
+                            weapon_mode = 1;
+                            weapons[0].SetActive(false);
+                            weapons[1].SetActive(true);
+                            break;
+                        }
+                    case 1://활일 때
+                        {
+                            weapon_mode = 0;
+                            weapons[0].SetActive(true);
+                            weapons[1].SetActive(false);
+                            break;
+                        }
                 }
-                case 1://활일 때
+            }
+            else
+            {
+                switch (weapon_mode)
                 {
-                    weapon_mode=0;
-                    weapons[0].SetActive(true);
-                    weapons[1].SetActive(false);
-                    break;
+                    case 2://검일 때
+                        {
+                            weapon_mode = 1;
+                            weapons[2].SetActive(false);
+                            weapons[1].SetActive(true);
+                            break;
+                        }
+                    case 1://활일 때
+                        {
+                            weapon_mode = 2;
+                            weapons[2].SetActive(true);
+                            weapons[1].SetActive(false);
+                            break;
+                        }
                 }
             }
         }
@@ -104,13 +130,26 @@ public class Player : MonoBehaviour
                     Invoke("ToIdle", 0.833f);
                     break;
                 }
+                case 2:
+                    {
+                        sword_effect.SetActive(true);
+                        animator.SetInteger("Attack", 0);
+                        if (Camera.main.ScreenToWorldPoint(Input.mousePosition).x > transform.position.x)
+                        {
+                            transform.localScale = new Vector3(-1, 1, 1);
+                        }
+                        else if (Camera.main.ScreenToWorldPoint(Input.mousePosition).x < transform.position.x)
+                        {
+                            transform.localScale = new Vector3(1, 1, 1);
+                        }
+                        Invoke("ToIdle", 0.68f);
+                        break;
+                    }
             }
         }
         //테스트용
-        /*if(Input.GetKeyDown(KeyCode.J))
-            Attacked(0);
-        else if(Input.GetKeyDown(KeyCode.K))
-            Attacked(1);*/
+        if (Input.GetKeyDown(KeyCode.J))
+            WeaponUpgrade();
 
         if(Input.GetKeyDown(KeyCode.Space)&& dash_able)
         {
@@ -201,5 +240,29 @@ public class Player : MonoBehaviour
     void ToOriginColor()
     {
         hitted_image.SetActive(false);
+    }
+
+    public void WeaponUpgrade()
+    {
+        midboss_cleared = true;
+        GameManager.player_power += 7;
+        weapons[0].SetActive(false);
+        switch (weapon_mode)
+        {
+            case 0://검일 때
+                {
+                    weapon_mode = 2;
+                    weapons[2].SetActive(true);
+                    weapons[1].SetActive(false);
+                    break;
+                }
+            case 1://활일 때
+                {
+                    weapon_mode = 1;
+                    weapons[2].SetActive(false);
+                    weapons[1].SetActive(true);
+                    break;
+                }
+        }
     }
 }

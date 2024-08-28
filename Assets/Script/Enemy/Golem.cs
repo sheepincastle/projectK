@@ -81,6 +81,7 @@ public class Golem : MonoBehaviour
         {
             animator.SetTrigger("Death");
             enemyMove.moveable = false;
+            player_script.WeaponUpgrade();
             Destroy(gameObject, 1);
         }
         //�����Ÿ��� �÷��̾ �ְ� ������Ÿ���� ������ �̻��϶� ���� �غ�
