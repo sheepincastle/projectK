@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        player_current_HP = player_HP;
+        
         switch(SceneManager.GetActiveScene().name)
         {
             case "Stage1":
