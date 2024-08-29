@@ -35,7 +35,7 @@ public class Rat : MonoBehaviour
     void Update()
     {
         distance = Vector2.Distance(transform.position, player_transform.position);
-        if(distance < 2 && attack_able)
+        if(distance < 4 && attack_able)
         {
             animator.SetTrigger("Attack");
             attack_able = false;
