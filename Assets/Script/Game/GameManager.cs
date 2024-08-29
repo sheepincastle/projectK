@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public static int current_stage=-1;
 
     public static int player_level=0;
-    public static int player_speed=5;
+    public static int player_speed=8;
     public static int player_power=10;
     public static int player_HP=100;
     public static int player_current_HP=100;
@@ -43,18 +43,6 @@ public class GameManager : MonoBehaviour
             case "FinalBoss":
                 current_stage=20;
                 break;
-        }
-    }
-
-    void Updatde()
-    {
-        if(Input.GetKeyDown(KeyCode.Escape) && Time.timeScale == 1)
-        {
-            Time.timeScale = 0;
-        }
-        else if(Input.GetKeyDown(KeyCode.Escape) && Time.timeScale == 0)
-        {
-            Time.timeScale = 1;
         }
     }
 }
