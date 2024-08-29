@@ -19,18 +19,4 @@ public class Arrow : MonoBehaviour
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle +180));//화살의 각도 조정
         rigid.velocity = direction * 10 / Vector3.Distance(mouse, transform.position);//발사
     }
-    
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        //투사체 또는 플레이어가 아닌 물체와 닿으면 파괴
-        if(other.tag != "Bullet" && other.tag != "Player" && other.tag != "PlayerWeapon")
-        {
-            if(other.tag == "Enemy")
-            {
-                EnemyData enemy_data = other.GetComponent<EnemyData>();
-                enemy_data.enemy_current_HP -= GameManager.player_power;
-                Destroy(gameObject);
-            }
-        }
-    }
 }
