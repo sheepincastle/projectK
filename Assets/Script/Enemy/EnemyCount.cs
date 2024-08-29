@@ -21,10 +21,10 @@ public class EnemyCounter : MonoBehaviour
     void UpdateEnemyCount()
     {
         // 'enemy' 태그를 가진 모든 게임 오브젝트를 찾습니다.
-        int enemyCount = GameObject.FindGameObjectsWithTag("enemy").Length;
+        int enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
 
         // 적의 수를 UI 텍스트에 표시합니다.
-        enemyCountText.text = "Enemy Count: " + enemyCount;
+        enemyCountText.text = "남은 적의 수: " + enemyCount;
     }
 }
 
