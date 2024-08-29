@@ -4254,7 +4254,8 @@ MonoBehaviour:
   - {fileID: 1105440026}
   summoned_enemies: []
   next_scene: {fileID: 7855975257183592281, guid: 0939ccdeeba1eb44f82b60637dbf97e1, type: 3}
-  portal_position: {fileID: 0}
+  portal_position: {fileID: 1919473687}
+  phase: 0
   progress: 1
   denger: {fileID: 5820756794168111532, guid: 088fda0216428d14d871fc9dfdfaab80, type: 3}
 --- !u!1 &1754670478

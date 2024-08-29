@@ -18,12 +18,14 @@ public class EnemyMove : MonoBehaviour
     public bool enemy_attack_range_enabled = false;
     //��ų ����� �������� �ʰ� �ϱ� ���� ����
     public bool moveable = true;
+    bool move = false;
     //���� ���� ũ�⿡ ������� �¿��Ī�� �ϱ� ���� ��
     float origin_x;
     Animator animator;
 
     void Start()
     {
+
         rigid = GetComponent<Rigidbody2D>();
         // ?��???? ???
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
@@ -39,7 +41,7 @@ public class EnemyMove : MonoBehaviour
             //�����϶�
             animator.SetBool("Run", true);
             //�� �ִϸ����͸� ���� �� bool�� 'Run'�� �̿��� �޸��� ��� �����ϱ�
-            rigid.MovePosition(Vector2.MoveTowards(transform.position, target.position + offset, enemy_speed*Time.deltaTime*5));
+            move = true;
             //transform.position = Vector2.MoveTowards(transform.position, target.position + offset, enemy_speed*Time.deltaTime);
 
             //���� ����� �ݴ�� ��Ÿ���� ��ũ��Ʈ�� �ƴ϶� ����Ƽ���� scale�� x�� ��ȣ�� �ݴ�� �س���
@@ -56,7 +58,14 @@ public class EnemyMove : MonoBehaviour
         {
             //�ȿ����϶�
             animator.SetBool("Run", false);
+            move = false;
         }
+    }
+
+    void FixedUpdate()
+    {
+        if(move)
+            rigid.MovePosition(Vector2.MoveTowards(transform.position, target.position + offset, enemy_speed*Time.deltaTime));
     }
 
     void OnCollisionEnter2D(Collision2D other)

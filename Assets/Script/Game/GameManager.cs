@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1;
         player_current_HP = player_HP;
         
         switch(SceneManager.GetActiveScene().name)
@@ -42,6 +43,18 @@ public class GameManager : MonoBehaviour
             case "FinalBoss":
                 current_stage=20;
                 break;
+        }
+    }
+
+    void Updatde()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape) && Time.timeScale == 1)
+        {
+            Time.timeScale = 0;
+        }
+        else if(Input.GetKeyDown(KeyCode.Escape) && Time.timeScale == 0)
+        {
+            Time.timeScale = 1;
         }
     }
 }
