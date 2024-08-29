@@ -46,7 +46,7 @@ public class Slime : MonoBehaviour
 
     void OnCollisionStay2D(Collision2D other)//�����ϴ� ���� ����
     {
-        if (distance < 2 && skill_able && other.gameObject.tag == "Player" && player_script.weakeningable) // ��ų
+        if (distance < 4 && skill_able && other.gameObject.tag == "Player" && player_script.weakeningable) // ��ų
         {
             animator.SetTrigger("Ability");
             GameManager.player_current_HP -= 2* enemyData.enemy_power;
@@ -64,7 +64,7 @@ public class Slime : MonoBehaviour
             Invoke("WeakeningDisable", 3);
 
         }
-        else if (distance < 2 && attack_able && other.gameObject.tag == "Player") //����
+        else if (distance < 4 && attack_able && other.gameObject.tag == "Player") //����
         {
             animator.SetTrigger("Attack");
             GameManager.player_current_HP -= enemyData.enemy_power;
