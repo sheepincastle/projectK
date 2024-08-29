@@ -19226,11 +19226,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attack_mode: -1
+  attack_able: 1
+  random_charge: 0
+  on_red_charge: 0
+  on_blue_charge: 0
   red_effect: {fileID: 596849391}
   blue_effect: {fileID: 1394935007}
+  blue_charge_HP: 0
+  blue_charge_HP_Neutralize: 60
   boom: {fileID: 6842274837998970335, guid: 59eecde62d7e15b4397970fe47c87b6f, type: 3}
   boom_position: {fileID: 1665701597}
-  cooltimes: 02000000080000000d0000000f000000
+  cooltimes: 04000000080000000d0000000f000000
+  able0: 1
+  able1: 1
+  able2: 1
+  able3: 1
 --- !u!1 &1932635992
 GameObject:
   m_ObjectHideFlags: 0

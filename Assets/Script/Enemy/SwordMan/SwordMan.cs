@@ -31,15 +31,6 @@ public class SwordMan : MonoBehaviour
     public bool able2 = true;
     public bool able3 = true;
 
-
-
-    //다수의 콜라이더로 인해 중복 데미지 입는 문제 해결
-    //데미지 받으면 0.4초 간 받은 피해만큼 회복
-    //플레이어 공격이 모두 0.4초 이상 걸려서 문제x
-    bool has_taken_damage;
-    float damage_cool_down = 0.4f;
-    float cool_down_timer = 0;
-
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -51,15 +42,6 @@ public class SwordMan : MonoBehaviour
 
     void Update()
     {
-        if(has_taken_damage)
-        {
-            cool_down_timer += Time.deltaTime;
-            if(cool_down_timer >= damage_cool_down)
-            {
-                has_taken_damage = false;
-                cool_down_timer = 0f;
-            }
-        }
         if(able0 && attack_able)
         {
             enemy_move.moveable = false;
@@ -116,19 +98,6 @@ public class SwordMan : MonoBehaviour
             red_effect.SetActive(false);
             animator.SetTrigger("Dash");
             attack_mode = 3;
-        }
-
-        if(other.tag == "PlayerWeapon" && player_script.on_attack && !has_taken_damage)
-        {
-            has_taken_damage = true;
-            if(player_script.weapon_mode == 0)
-            {
-                enemy_data.enemy_current_HP += 20;
-            }
-            else if(player_script.weapon_mode == 1)
-            {
-                enemy_data.enemy_current_HP += 10;
-            }
         }
     }
 
