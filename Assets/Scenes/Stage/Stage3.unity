@@ -17310,7 +17310,7 @@ GameObject:
   - component: {fileID: 1009084425}
   m_Layer: 0
   m_Name: Stage3Manager
-  m_TagString: Untagged
+  m_TagString: Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17387,6 +17387,7 @@ MonoBehaviour:
   - {fileID: 0}
   next_scene: {fileID: 7855975257183592281, guid: ef516fafbb40f8d40be6a56a7d0cd6e2, type: 3}
   portal_position: {fileID: 47438677}
+  phase: 0
   progress: 1
   denger: {fileID: 5820756794168111532, guid: 088fda0216428d14d871fc9dfdfaab80, type: 3}
 --- !u!4 &1009084426
@@ -41593,7 +41594,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   door: {fileID: 2100805726}
-  checkInterval: 10
+  checkInterval: 3
 --- !u!19719996 &2100805731
 TilemapCollider2D:
   m_ObjectHideFlags: 0

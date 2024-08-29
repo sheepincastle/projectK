@@ -16,7 +16,7 @@ public class StageManager : MonoBehaviour
     public List<GameObject> summoned_enemies = new List<GameObject>();
     public GameObject next_scene;
     public Transform portal_position;
-    int phase;
+    public int phase;
     public bool progress = true;
     public GameObject denger;
     float timer;
