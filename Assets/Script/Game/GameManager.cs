@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     public static int player_HP=100;
     public static int player_current_HP=100;
 
+    public GameObject stored;
+
     void Start()
     {
         Time.timeScale = 1;
@@ -44,5 +46,23 @@ public class GameManager : MonoBehaviour
                 current_stage=20;
                 break;
         }
+    }
+
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Insert))
+        {
+            if(!PlayerPrefs.HasKey("Stage"))
+            {
+                PlayerPrefs.SetInt("Stage", current_stage);
+                stored.SetActive(true);
+                Invoke("StoredDisable", 1);
+            }
+        }
+    }
+
+    void StoredDisable()
+    {
+        stored.SetActive(false);
     }
 }

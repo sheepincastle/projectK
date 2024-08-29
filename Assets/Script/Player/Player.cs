@@ -29,6 +29,8 @@ public class Player : MonoBehaviour
     public bool weakeningable = true;
     public bool midboss_cleared = false;
 
+    public int medicine;
+
     void Awake()
     {
         animator = GetComponent<Animator>();
@@ -40,10 +42,17 @@ public class Player : MonoBehaviour
         weapons[2].SetActive(false);
         animator.SetInteger("Attack", -1);
         animator.SetInteger("Attacked", -1);
+
+        medicine = 3;
     }
 
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Alpha1) && medicine> 0)
+        {
+            GameManager.player_current_HP += GameManager.player_HP/2;
+            medicine--;
+        }
         //tap키로 무기 변환
         if(Input.GetKeyDown(KeyCode.Tab))
         {
@@ -143,8 +152,8 @@ public class Player : MonoBehaviour
             }
         }
         //테스트용
-        if (Input.GetKeyDown(KeyCode.J))
-            WeaponUpgrade();
+        /*if (Input.GetKeyDown(KeyCode.J))
+            WeaponUpgrade();*/
 
         if(Input.GetKeyDown(KeyCode.Space)&& dash_able)
         {

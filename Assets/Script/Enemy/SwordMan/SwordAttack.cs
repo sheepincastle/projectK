@@ -15,6 +15,11 @@ public class SwordAttack : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        if(other.tag == "PlayerWeapon" && sword_man.attack_mode == -2)
+        {
+            sword_man.Parrying();
+        }
+
         if(other.tag == "Player")
         {
             switch(sword_man.attack_mode)
@@ -46,18 +51,7 @@ public class SwordAttack : MonoBehaviour
                     player.GetComponent<Player>().Attacked(1);
                     break;
                 }
-                case 3:
-                {
-                    GameManager.player_current_HP -= enemy_data.enemy_power*4;
-                    player.GetComponent<Player>().Hited();
-                    break;
-                }
             }
-        }
-
-        if(other.tag == "PlayerWeapon" && sword_man.attack_mode == -2)
-        {
-            sword_man.Parrying();
         }
     }
 }
