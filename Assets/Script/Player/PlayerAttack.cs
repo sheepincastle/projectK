@@ -27,7 +27,7 @@ public class PlayerAttack : MonoBehaviour
                     enemy_data = other.GetComponentInParent<EnemyData>();
                 }
                 enemy_data.enemy_current_HP -= GameManager.player_power;
-                if(player.weapon_mode == 0)
+                if(player.weapon_mode == 0 || player.weapon_mode == 2)
                 {
                     enemy_data.enemy_current_HP -= GameManager.player_power;
                     Debug.Log("검 공격");
