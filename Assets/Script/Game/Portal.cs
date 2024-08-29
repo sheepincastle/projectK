@@ -9,6 +9,7 @@ public class Portal : MonoBehaviour
     public String next_stage;
     public GameObject player;
     public GameObject real_player;
+    public int nextstage;
     //로드할 씬의 좌표
     public float x;
     public float y;
@@ -33,6 +34,8 @@ public class Portal : MonoBehaviour
     {
         player.transform.position = new Vector3(x, y, z);
         real_player.transform.localPosition = new Vector3(0, 0, 0);
+        GameManager.current_stage = nextstage;
+
         
         //콜백 연결 해제
         SceneManager.sceneLoaded -= OnSceneLoaded;

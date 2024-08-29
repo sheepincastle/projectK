@@ -209,6 +209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39828fc5a67d8bc4688f48170717a86f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stored: {fileID: 0}
 --- !u!4 &74236592
 Transform:
   m_ObjectHideFlags: 0
@@ -746,6 +747,7 @@ MonoBehaviour:
   next_stage: Stage1
   player: {fileID: 1244422095}
   real_player: {fileID: 1326420228}
+  nextstage: 1
   x: -10
   y: 0
   z: 0
@@ -1876,6 +1878,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75702ffc9717aad438ae20d015320b8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spwn: {fileID: 1216160738}
 --- !u!114 &1216160742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2108,6 +2111,7 @@ MonoBehaviour:
   sword_effect: {fileID: 805483699}
   weakeningable: 1
   midboss_cleared: 0
+  medicine: 0
 --- !u!114 &1326420235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2617,10 +2621,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 643112839}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0000019073, y: 2.2683}
-  m_SizeDelta: {x: 1920, y: 943.46}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 2.2683105}
+  m_SizeDelta: {x: 0, y: 5.460022}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1716251800
 MonoBehaviour:

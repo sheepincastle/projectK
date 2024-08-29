@@ -4,28 +4,43 @@ using UnityEngine;
 
 public class SpawnPoint : MonoBehaviour
 {
+    public GameObject spwn;
     // Start is called before the first frame update
     void Start()
     {
-        if(GameManager.current_stage == 1)
-            gameObject.transform.position = new Vector2(0, 0);
-        else if(GameManager.current_stage == 2)
-            gameObject.transform.position = new Vector2(0, 0);
-        else if (GameManager.current_stage == 3)
-            gameObject.transform.position = new Vector2(0, 0);
-        else if (GameManager.current_stage == 4)
-            gameObject.transform.position = new Vector2(0, 0);
-        else if (GameManager.current_stage == 10)
-            gameObject.transform.position = new Vector2(0, 0);
-        else if (GameManager.current_stage == 20)
-            gameObject.transform.position = new Vector2(0, 0);
-        else
-            gameObject.transform.position = new Vector2(0, 0);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        Debug.Log("Current Stage: " + GameManager.current_stage);
+
+        if (GameManager.current_stage == 1)
+        {
+            this.transform.position = new Vector2(-10, 0);
+        }
+        else if (GameManager.current_stage >= 2 && GameManager.current_stage <= 4)
+        {
+            Vector3 newPosition = Vector3.zero;
+
+            if (GameManager.current_stage == 2)
+                newPosition = new Vector2(-26, 7);
+            else if (GameManager.current_stage == 3)
+                newPosition = new Vector2(-20, 1);
+            else if (GameManager.current_stage == 4)
+                newPosition = new Vector2(-30, -15);
+
+            spwn.transform.position = newPosition;
+        }
+        else if (GameManager.current_stage == 10 || GameManager.current_stage == 20)
+        {
+            spwn.transform.position = new Vector2(0, 0);
+        }
+        else
+        {
+            spwn.transform.position = new Vector2(0, 0);
+        }
     }
 }
+    
