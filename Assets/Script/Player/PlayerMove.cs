@@ -10,6 +10,7 @@ public class PlayerMove : MonoBehaviour
     Animator animator;
     Transform player_transform;
     public static bool moveable;
+    public int player_direction = 1;
 
     void Awake()
     {
@@ -37,9 +38,15 @@ public class PlayerMove : MonoBehaviour
         }
         //방향전환
         if((moveX>0) && animator.GetInteger("Attack")==-1 && animator.GetInteger("Attacked")==-1 && moveable)
+        {
             player_transform.localScale = new Vector3(-1, 1, 1);
+            player_direction = 0;
+        }
         else if((moveX<0) && animator.GetInteger("Attack")==-1 && animator.GetInteger("Attacked")==-1 && moveable)
+        {
             player_transform.localScale = new Vector3(1, 1, 1);
+            player_direction = 1;
+        }
     }
 
     void FixedUpdate()

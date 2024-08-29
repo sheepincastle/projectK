@@ -43,7 +43,7 @@ public class Bat : MonoBehaviour
 
     void OnCollisionStay2D(Collision2D other)//�����ϴ� ���� ����
     {
-        if (distance < 2 && attack_able && other.gameObject.tag == "Player") // ����
+        if (distance < 4 && attack_able && other.gameObject.tag == "Player") // ����
         {
             animator.SetTrigger("Attack");
             if( PlayerMove.moveable == false)// �����̻�� �߰� ������

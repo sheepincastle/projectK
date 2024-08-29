@@ -8,18 +8,18 @@ public class EnemyMove : MonoBehaviour
     Rigidbody2D rigid;
     private Transform target;
     private Vector3 offset = new Vector3(0, 1, 0);
-    //?? ???, ?��? ????, ???? ????
+    //?? ???, ???? ????, ???? ????
     public float enemy_speed = 3;
     public float enemy_recognition_range = 10;
     public float enemy_attack_range = 1;
 
     //public float enemy_attack_range=1;
-    //���� ���� �÷��̾ �����Ҽ� ���� ���� �߻�->������� �����ϵ��� ����
+    //???? ???? ?��???? ??????? ???? ???? ???->??????? ????????? ????
     public bool enemy_attack_range_enabled = false;
-    //��ų ����� �������� �ʰ� �ϱ� ���� ����
+    //??? ????? ???????? ??? ??? ???? ????
     public bool moveable = true;
     bool move = false;
-    //���� ���� ũ�⿡ ������� �¿��Ī�� �ϱ� ���� ��
+    //???? ???? ??? ??????? ?��????? ??? ???? ??
     float origin_x;
     Animator animator;
 
@@ -27,7 +27,7 @@ public class EnemyMove : MonoBehaviour
     {
 
         rigid = GetComponent<Rigidbody2D>();
-        // ?��???? ???
+        // ??????? ???
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         animator = GetComponent<Animator>();
         origin_x = transform.localScale.x;
@@ -36,27 +36,27 @@ public class EnemyMove : MonoBehaviour
     void Update()
     {
         float distance = Vector2.Distance(transform.position, target.position + offset);
-        if(moveable &&  enemy_recognition_range > distance)
+        if(moveable && enemy_recognition_range > distance && (enemy_attack_range-1) < distance)
         {
-            //�����϶�
+            //???????
             animator.SetBool("Run", true);
-            //�� �ִϸ����͸� ���� �� bool�� 'Run'�� �̿��� �޸��� ��� �����ϱ�
+            //?? ????????? ???? ?? bool?? 'Run'?? ????? ????? ??? ???????
             move = true;
             //transform.position = Vector2.MoveTowards(transform.position, target.position + offset, enemy_speed*Time.deltaTime);
 
-            //���� ����� �ݴ�� ��Ÿ���� ��ũ��Ʈ�� �ƴ϶� ����Ƽ���� scale�� x�� ��ȣ�� �ݴ�� �س���
-            if(target.position.x > transform.position.x)//�÷��̾ ���� �����ʿ� ���� ��
+            //???? ????? ???? ??????? ???????? ???? ????????? scale?? x?? ????? ???? ?????
+            if(target.position.x > transform.position.x && moveable)//?��???? ???? ??????? ???? ??
             {
-                transform.localScale = new Vector3(origin_x, transform.localScale.y, transform.localScale.z);//�״��
+                transform.localScale = new Vector3(origin_x, transform.localScale.y, transform.localScale.z);//????
             }
-            else if(target.position.x < transform.position.x)//�÷��̾ ���� ���ʿ� ���� ��
+            else if(target.position.x < transform.position.x && moveable)//?��???? ???? ????? ???? ??
             {
-                transform.localScale = new Vector3(origin_x * -1, transform.localScale.y, transform.localScale.z);//�¿����
+                transform.localScale = new Vector3(origin_x * -1, transform.localScale.y, transform.localScale.z);//?��????
             }
         }
         else
         {
-            //�ȿ����϶�
+            //????????
             animator.SetBool("Run", false);
             move = false;
         }
@@ -66,21 +66,5 @@ public class EnemyMove : MonoBehaviour
     {
         if(move)
             rigid.MovePosition(Vector2.MoveTowards(transform.position, target.position + offset, enemy_speed*Time.deltaTime));
-    }
-
-    void OnCollisionEnter2D(Collision2D other)
-    {
-        if(other.gameObject.tag == "Player")//�÷��̾�� �����ϸ� �������� ����
-        {
-            moveable = false;
-        }
-    }
-
-    void OnCollisionExit2D(Collision2D other)
-    {
-        if(other.gameObject.tag == "Player")//�÷��̾�� �������� �����ϼ� ����
-        {
-            moveable = true;
-        }
     }
 }

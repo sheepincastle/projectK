@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy_speed: 3
-  enemy_recognition_range: 10
+  enemy_recognition_range: 15
   enemy_attack_range: 1
   enemy_attack_range_enabled: 0
   moveable: 1

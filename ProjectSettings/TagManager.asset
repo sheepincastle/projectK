@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - PlayerWeapon
   - Manager
+  - Spawn
   layers:
   - Default
   - TransparentFX

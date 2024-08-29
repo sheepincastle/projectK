@@ -13,10 +13,12 @@ public class GameManager : MonoBehaviour
     public static int current_stage=-1;
 
     public static int player_level=0;
-    public static int player_speed=5;
+    public static int player_speed=8;
     public static int player_power=10;
     public static int player_HP=100;
     public static int player_current_HP=100;
+
+    public GameObject stored;
 
     void Start()
     {
@@ -46,15 +48,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void Updatde()
+    void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape) && Time.timeScale == 1)
+        if(Input.GetKeyDown(KeyCode.Insert))
         {
-            Time.timeScale = 0;
+            if(!PlayerPrefs.HasKey("Stage"))
+            {
+                PlayerPrefs.SetInt("Stage", current_stage);
+                stored.SetActive(true);
+                Invoke("StoredDisable", 1);
+            }
         }
-        else if(Input.GetKeyDown(KeyCode.Escape) && Time.timeScale == 0)
-        {
-            Time.timeScale = 1;
-        }
+    }
+
+    void StoredDisable()
+    {
+        stored.SetActive(false);
     }
 }
