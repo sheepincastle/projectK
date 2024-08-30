@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
             case "FinalBoss":
                 current_stage=20;
                 break;
+
         }
     }
 
