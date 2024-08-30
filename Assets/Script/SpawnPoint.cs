@@ -14,7 +14,6 @@ public class SpawnPoint : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Current Stage: " + GameManager.current_stage);
 
         if (GameManager.current_stage == 1)
         {

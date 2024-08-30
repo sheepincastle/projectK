@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
 
     //대쉬기능을 위한 변수들
     public bool on_dash = false;
-    public float dash_cooltime = 10;
+    public float dash_cooltime = 7.5f;
     public bool dash_able = true;
     public float dash_duration = 0.5f;
     public float dash_time;
@@ -152,8 +152,8 @@ public class Player : MonoBehaviour
             }
         }
         //테스트용
-        if (Input.GetKeyDown(KeyCode.J))
-            WeaponUpgrade();
+        /*if (Input.GetKeyDown(KeyCode.J))
+            WeaponUpgrade();*/
 
         if(Input.GetKeyDown(KeyCode.Space)&& dash_able)
         {

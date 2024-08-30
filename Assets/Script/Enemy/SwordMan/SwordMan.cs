@@ -31,6 +31,8 @@ public class SwordMan : MonoBehaviour
     public bool able2 = true;
     public bool able3 = true;
 
+    bool dead = false;
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -70,8 +72,10 @@ public class SwordMan : MonoBehaviour
                 StartCoroutine(AttackDown());
         }
 
-        if(enemy_data.enemy_HP <= 0)
+        if(enemy_data.enemy_current_HP <= 0 && !dead)
         {
+            Debug.Log("디짐");
+            dead = true;
             animator.SetTrigger("Neutralize");
             rigid.velocity = Vector3.zero;
             attack_able = false;
