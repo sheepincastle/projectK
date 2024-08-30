@@ -152,8 +152,8 @@ public class Player : MonoBehaviour
             }
         }
         //테스트용
-        /*if (Input.GetKeyDown(KeyCode.J))
-            WeaponUpgrade();*/
+        if (Input.GetKeyDown(KeyCode.J))
+            WeaponUpgrade();
 
         if(Input.GetKeyDown(KeyCode.Space)&& dash_able)
         {
