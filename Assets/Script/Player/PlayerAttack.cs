@@ -23,7 +23,6 @@ public class PlayerAttack : MonoBehaviour
                 //검은 데미지 2배
                 //활과 데미지가 같으면 원거리공격인 활만씀
                 EnemyData enemy_data = other.GetComponent<EnemyData>();
-                enemy_data.enemy_current_HP -= enemy_data.enemy_current_HP;//테스트
                 
                 if(enemy_data == null)
                 {
@@ -36,7 +35,7 @@ public class PlayerAttack : MonoBehaviour
                 }
                 else if(player.weapon_mode == 1)
                 {
-                    enemy_data.enemy_current_HP -= GameManager.player_power * (2 / 3);
+                    enemy_data.enemy_current_HP -= GameManager.player_power / 2;
                 }
                 has_attacked = true;
                 Invoke("ToHasntAttacked", 0.4f);

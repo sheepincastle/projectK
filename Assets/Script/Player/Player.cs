@@ -251,6 +251,7 @@ public class Player : MonoBehaviour
         midboss_cleared = true;
         GameManager.player_power += 7;
         GameManager.player_HP += 50;
+        GameManager.player_current_HP += 50;
         weapons[0].SetActive(false);
         switch (weapon_mode)
         {

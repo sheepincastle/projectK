@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.VFX;
@@ -26,7 +27,11 @@ public class GameOverBG : MonoBehaviour
         {
             gameoverUI.SetActive(true);
             button.SetActive(true);
-            Time.timeScale = 0;
+            Time.timeScale = 0.0000000000000000000000000001f;
+            if(Input.GetKeyDown(KeyCode.KeypadEnter))
+            {
+                Restart();
+            }
         }
     }
     public void Restart()

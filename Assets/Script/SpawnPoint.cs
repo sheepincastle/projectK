@@ -25,7 +25,7 @@ public class SpawnPoint : MonoBehaviour
             Vector3 newPosition = Vector3.zero;
 
             if (GameManager.current_stage == 2)
-                newPosition = new Vector2(-26, 7);
+                newPosition = new Vector2(-24, 7);
             else if (GameManager.current_stage == 3)
                 newPosition = new Vector2(-20, 1);
             else if (GameManager.current_stage == 4)

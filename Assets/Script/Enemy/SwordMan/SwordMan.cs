@@ -197,6 +197,7 @@ public class SwordMan : MonoBehaviour
 
     IEnumerator Dash()//반격 터짐
     {
+        Debug.Log("반격");
         on_red = false;
         red_effect.SetActive(false);
         rigid.velocity = Vector3.zero;
